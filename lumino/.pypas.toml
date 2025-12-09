@@ -1,0 +1,24 @@
+slug = "lumino"
+bundle = [
+    "/docs/README.pdf",
+    "/tests",
+    "/fixtures",
+    "/media/avatars/example_*.jpg",
+    "/factories",
+    "/.gitignore",
+    "/pyproject.toml",
+    "/uv.lock",
+    "/justfile",
+    "/pytest.ini",
+]
+backup_on_update = ["justfile"]
+exclude_from_zip = [
+    "*.pyc",
+    ".DS_Store",
+    "/.git",
+    "*.bak",
+    ".venv",
+    ".env",
+    "/media",
+]
+test_cmd = "uv run pytest -s"
