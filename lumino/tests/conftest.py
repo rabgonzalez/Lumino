@@ -12,27 +12,28 @@ from factories.users import StudentFactory, TeacherFactory
 # URL Patterns
 # ==============================================================================
 
-LOGIN_URL = '/login/'
-LOGOUT_URL = '/logout/'
-SIGNUP_URL = '/signup/'
+TESTLANG = 'en'
 
-USER_DETAIL_URL = '/users/{username}/'
-USER_EDIT_URL = '/user/edit/'
-USER_LEAVE_URL = '/user/leave/'
+ROOT_URL = f'/{TESTLANG}/'
 
-SUBJECT_LIST_URL = '/subjects/'
-SUBJECT_DETAIL_URL = '/subjects/{subject_code}/'
-SUBJECT_ENROLL_URL = '/subjects/enroll/'
-SUBJECT_UNENROLL_URL = '/subjects/unenroll/'
-SUBJECT_GRADE_CERTIFICATE_URL = '/subjects/certificate/'
+LOGIN_URL = f'/{TESTLANG}/login/'
+LOGOUT_URL = f'/{TESTLANG}/logout/'
+SIGNUP_URL = f'/{TESTLANG}/signup/'
 
-LESSON_DETAIL_URL = '/subjects/{subject_code}/lessons/{lesson_pk}/'
-LESSON_ADD_URL = '/subjects/{subject_code}/lessons/add/'
-LESSON_EDIT_URL = '/subjects/{subject_code}/lessons/{lesson_pk}/edit/'
-LESSON_DELETE_URL = '/subjects/{subject_code}/lessons/{lesson_pk}/delete/'
-
-MARKS_LIST_URL = '/subjects/{subject_code}/marks/'
-MARKS_EDIT_URL = '/subjects/{subject_code}/marks/edit/'
+USER_DETAIL_URL = f'/{TESTLANG}/users/{{username}}/'
+USER_EDIT_URL = f'/{TESTLANG}/user/edit/'
+USER_LEAVE_URL = f'/{TESTLANG}/user/leave/'
+SUBJECT_LIST_URL = f'/{TESTLANG}/subjects/'
+SUBJECT_DETAIL_URL = f'/{TESTLANG}/subjects/{{subject_code}}/'
+SUBJECT_ENROLL_URL = f'/{TESTLANG}/subjects/enroll/'
+SUBJECT_UNENROLL_URL = f'/{TESTLANG}/subjects/unenroll/'
+SUBJECT_GRADE_CERTIFICATE_URL = f'/{TESTLANG}/subjects/certificate/'
+LESSON_DETAIL_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/{{lesson_pk}}/'
+LESSON_ADD_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/add/'
+LESSON_EDIT_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/{{lesson_pk}}/edit/'
+LESSON_DELETE_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/{{lesson_pk}}/delete/'
+MARKS_LIST_URL = f'/{TESTLANG}/subjects/{{subject_code}}/marks/'
+MARKS_EDIT_URL = f'/{TESTLANG}/subjects/{{subject_code}}/marks/edit/'
 
 
 # ==============================================================================

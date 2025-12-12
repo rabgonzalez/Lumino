@@ -3,4 +3,8 @@
 
 {% block content %}
   <h1>{% translate 'Join Lumino. The cool education platform!'%}</h1>
-{% endblock %}
+  <div class="auth">
+    <a href="{% url 'accounts:login' %}">{% translate 'login' %}</a>
+    <a href="{% url 'accounts:signup' %}">{% translate 'signup' %}</a>
+  </div>
+  {% endblock %}

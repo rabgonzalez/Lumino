@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <h2>{% translate 'My subjects' %}</h2>
+  {% for subject in subjects %}
+
+  {% empty %}
+  <p>{% translate 'No subjects yet' %}</p>
+  {% endfor %}
+
+{% endblock %}

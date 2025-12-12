@@ -1,3 +1,6 @@
 from django.shortcuts import render
+from .models import Subject
 
-# Create your views here.
+def subject_list(request):
+    subjects = {}
+    return render(request, 'subjects.html', dict(subjects=subjects))

@@ -826,7 +826,7 @@ def test_request_grade_certificate_works_properly_for_student_role(
         )
 
         client.force_login(student)
-        response = client.get('/subjects/certificate/')
+        response = client.get(conftest.SUBJECT_GRADE_CERTIFICATE_URL)
         assert response.status_code == HTTPStatus.OK
 
         clean_response = re.sub(r'<.*?>', '', response.content.decode())
@@ -851,5 +851,5 @@ def test_request_grade_certificate_is_forbidden_when_any_subject_does_not_have_m
     enrollments[0].mark = None
     enrollments[0].save()
     client.force_login(student)
-    response = client.get('/subjects/certificate/')
+    response = client.get(conftest.SUBJECT_GRADE_CERTIFICATE_URL)
     assert response.status_code == HTTPStatus.FORBIDDEN

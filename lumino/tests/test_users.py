@@ -26,7 +26,7 @@ def test_user_detail_displays_all_elements(client, student, teacher):
     # sorl-thumbnail creates this path for thumbnails
     assert re.search(r'<img.*?src="/media/cache.*?"', response_text, re.S | re.M)
 
-    response = client.get(f'/users/{teacher.username}/')
+    response = client.get(conftest.USER_DETAIL_URL.format(username=teacher.username))
     assert response.status_code == HTTPStatus.OK
     assertContains(response, 'Teacher')
 
@@ -105,7 +105,7 @@ def test_leave_works(client, student, django_user_model):
     student_pk = student.pk
     client.force_login(student)
     response = client.get(conftest.USER_LEAVE_URL, follow=True)
-    assertRedirects(response, '/')
+    assertRedirects(response, conftest.ROOT_URL)
     User = django_user_model
     with pytest.raises(User.DoesNotExist):
         User.objects.get(pk=student_pk)

@@ -1,1 +1,12 @@
-<h1>Lumino</h1>
+{% load shared_extras %}
+{% load i18n %}
+
+<a href="{% url 'index'%}"><h1>Lumino</h1></a>
+<div class="lang">
+  {% setlang %}
+</div>
+{% if user.is_authenticated %}
+<div class="auth">
+    <a href="{% url 'accounts:logout' %}">{% translate 'logout' %}</a>
+</div>
+{% endif %}

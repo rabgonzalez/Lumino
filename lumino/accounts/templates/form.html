@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<div class="auth">
+  {% if type == 'login' %}
+  <h1>{% translate 'Login' %}</h1>
+  {% else %}
+  <h1>{% translate 'Signup' %}</h1>
+  {% endif %}
+  <form method="post" novalidate>
+    {% csrf_token %} 
+    {{ form }} 
+    {% if type == 'login' %} 
+    <input type="submit" value={% translate 'login' %}>
+    <a href="{% url 'accounts:signup' %}">{% translate 'signup' %}</a> 
+    {% else %} 
+    <input type="submit" value={% translate 'signup' %}> 
+    <a href="{% url 'accounts:login' %}">{% translate 'login' %}</a> 
+    {% endif %}
+  </form>
+</div>
+{%endblock%}

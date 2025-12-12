@@ -56,18 +56,20 @@ def test_login_redirects_after_succeed_login(client, django_user_model):
     username, password = 'testuser', 'testpassword'
     django_user_model.objects.create_user(username=username, password=password)
 
-    response = client.post('/login/', {'username': username, 'password': password})
+    response = client.post(conftest.LOGIN_URL, {'username': username, 'password': password})
     assert response.status_code == 302
-    assert response.url == '/'
+    assert response.url == conftest.ROOT_URL
 
 
 @pytest.mark.django_db
 def test_login_redirects_after_succeed_login_with_next_parameter(client, django_user_model):
     username, password = 'testuser', 'testpassword'
-    django_user_model.objects.create_user(username=username, password=password)
+    user = django_user_model.objects.create_user(username=username, password=password)
 
-    next_url = '/echos/'
-    response = client.post(f'/login/?next={next_url}', {'username': username, 'password': password})
+    next_url = conftest.USER_DETAIL_URL.format(username=user.username)
+    response = client.post(
+        f'{conftest.LOGIN_URL}?next={next_url}', {'username': username, 'password': password}
+    )
     assert response.status_code == 302
     assert response.url == next_url
 
@@ -98,7 +100,7 @@ def test_logout_succeeds(client, django_user_model):
     django_user_model.objects.create_user(username=username, password=password)
 
     client.login(username=username, password=password)
-    response = client.get('/logout/')
+    response = client.get(conftest.LOGOUT_URL)
     assert response.status_code == 302  # Redirect on logout
     assert '_auth_user_id' not in client.session, (
         'La sesión no se limpió correctamente después del cierre de sesión'
@@ -111,9 +113,9 @@ def test_logout_redirects_after_succeed_logout(client, django_user_model):
     django_user_model.objects.create_user(username=username, password=password)
 
     client.login(username=username, password=password)
-    response = client.get('/logout/')
+    response = client.get(conftest.LOGOUT_URL)
     assert response.status_code == 302
-    assert response.url == '/'
+    assert response.url == conftest.ROOT_URL
 
 
 # ==============================================================================
@@ -123,7 +125,7 @@ def test_logout_redirects_after_succeed_logout(client, django_user_model):
 
 @pytest.mark.django_db
 def test_signup_page_contains_expected_elements(client):
-    response = client.get('/signup/')
+    response = client.get(conftest.SIGNUP_URL)
     assert response.status_code == 200
     assertContains(response, 'username')
     assertContains(response, 'password')
@@ -185,7 +187,7 @@ def test_signup_redirects_after_succeed_signup(client):
     }
     response = client.post(conftest.SIGNUP_URL, data=signup_data)
     assert response.status_code == 302
-    assert response.url == '/'
+    assert response.url == conftest.ROOT_URL
 
 
 @pytest.mark.django_db
