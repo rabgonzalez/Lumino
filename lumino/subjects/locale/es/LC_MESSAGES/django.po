@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-12 15:36+0000\n"
+"POT-Creation-Date: 2025-12-15 16:07+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,62 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
+#: subjects/templates/student_subjects.html:4
+msgid "Get your certificate of qualifications!"
+msgstr "Obten tu certificado de calificaciones!"
+
+#: subjects/templates/student_subjects.html:7
+msgid "Enroll in modules"
+msgstr "Matricularse en módulos"
+
+#: subjects/templates/student_subjects.html:8
+msgid "Cancel modules"
+msgstr "Darse de baja en módulos"
+
+#: subjects/templates/student_subjects.html:13
+#: subjects/templates/subject_detail.html:24
+#: subjects/templates/teacher_subjects.html:6
+msgid "Details"
+msgstr "Detalles"
+
+#: subjects/templates/student_subjects.html:16
+#, fuzzy
+#| msgid "No subjects yet"
+msgid "No Modules yet"
+msgstr "Todavía no hay módulos"
+
+#: subjects/templates/subject_detail.html:7
+msgid "Teacher:"
+msgstr "Profesor/a:"
+
+#: subjects/templates/subject_detail.html:9
+msgid "Go back"
+msgstr "Atrás"
+
+#: subjects/templates/subject_detail.html:12
+msgid "New lesson"
+msgstr "Nueva lección"
+
+#: subjects/templates/subject_detail.html:20
+msgid "Your mark for this subject:"
+msgstr "Tu nota en esta asignatura:"
+
+#: subjects/templates/subject_detail.html:26
+msgid "Edit lesson"
+msgstr "Editar lección"
+
+#: subjects/templates/subject_detail.html:27
+msgid "Delete lesson"
+msgstr "Eliminar lección"
+
+#: subjects/templates/subject_detail.html:34
+msgid "There is no lessons yet"
+msgstr "Todavía no hay lecciones"
+
 #: subjects/templates/subjects.html:5
 msgid "My subjects"
 msgstr "Mis módulos"
 
-#: subjects/templates/subjects.html:9
+#: subjects/templates/teacher_subjects.html:9
 msgid "No subjects yet"
 msgstr "Todavía no hay módulos"

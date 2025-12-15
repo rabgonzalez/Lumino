@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+{% if user.profile.role == 'S' and mark %}
+    <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>
+{% endif %}
+
+<h1>{{subject.code}}</h1>
+<h3>{{subject.name}}</h3>
+<h4>{% translate 'Teacher:' %} {{subject.teacher}}</h4>
+
+<a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
+
+{% if user.profile.role == 'T' %}
+<a href="">{% translate 'New lesson' %}</a>
+{% endif %}
+
+{% if subject.lessons %}
+<div class="lessons">
+{% for lesson in subject.lessons.all %}
+  <div class="lesson">
+    <h5>{{lesson.title}}</h5>
+    <div class="controls">
+    <a href="">{% translate 'Details' %}</a>
+    {% if user.profile.role == 'T' %}
+    <a href="">{% translate 'Edit lesson' %}</a>
+    <a href="">{% translate 'Delete lesson' %}</a>
+    {% endif %}
+    </div>
+  </div>
+{% endfor %}
+</div>
+{% else %}
+<p>{% translate 'There is no lessons yet' %}</p>
+{% endif %}
+{% endblock %}

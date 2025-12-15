@@ -1,8 +1,10 @@
-from django.conf.urls.i18n import i18n_patterns
-from django.urls import include, path
-from . import views 
+from django.urls import path, register_converter
+from . import views, converters
+
 app_name = 'subjects'
+register_converter(converters.SubjectConverter, 'subject')
 
 urlpatterns = [
     path('', views.subject_list, name='subject-list'),
+    path('<subject:subject>/', views.subject_detail, name='subject-detail'),
 ]

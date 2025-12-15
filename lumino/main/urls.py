@@ -12,6 +12,6 @@ urlpatterns = (
         path('admin/', admin.site.urls),
         path('', shared.views.index, name="index"),
         path('', include('accounts.urls')),
-        path('subjects', include('subjects.urls')),
+        path('subjects/', include('subjects.urls')),
     )
 )

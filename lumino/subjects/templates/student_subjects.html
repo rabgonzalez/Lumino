@@ -1,0 +1,18 @@
+{% load i18n %}
+{% if certificate %}
+<div class="certificate">
+  <a href="">{% translate 'Get your certificate of qualifications!' %}</a>
+</div>
+{% endif %}
+<a href="">{% translate 'Enroll in modules' %}</a>
+<a href="">{% translate 'Cancel modules' %}</a>
+<div class="modules">
+  {% for module in modules %}
+  <div class="module">
+    <p>{{module.subject}}</p>
+    <a href="{{ module.subject.get_absolute_url }}">{% translate 'Details' %}</a>
+  </div>
+  {% empty %}
+  <p>{% translate 'No Modules yet' %}</p>
+  {% endfor %}
+</div>

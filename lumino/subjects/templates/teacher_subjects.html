@@ -1,0 +1,11 @@
+{% load i18n %}
+<div class="subjects">
+  {% for subject in subjects %}
+  <div class="subject">
+    <p>{{subject.code}}</p>
+    <a href="{{ subject.get_absolute_url }}">{% translate 'Details' %}</a>
+  </div>
+  {% empty %}
+  <p>{% translate 'No subjects yet' %}</p>
+  {% endfor %}
+</div>

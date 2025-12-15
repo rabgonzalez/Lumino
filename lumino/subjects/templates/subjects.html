@@ -4,16 +4,9 @@
 {% block content %}
   <h2>{% translate 'My subjects' %}</h2>
   {% include 'messages.html' %}
-  <ul>
-    {% for module in modules %}
-    {% if user.profile.role == 'S' %}
-    <li>{{module.subject}}</li>
-    {% elif user.profile.role == 'T' %}
-    <li>{{module.code}}</li>
-    {% endif %}
-    {% empty %}
-    <p>{% translate 'No subjects yet' %}</p>
-    {% endfor %}
-  </ul>
-
+  {% if user.profile.role == 'S' %}
+  {% include 'student_subjects.html' %}
+  {% elif user.profile.role == 'T' %}
+  {% include 'teacher_subjects.html' %}
+  {% endif %}
 {% endblock %}

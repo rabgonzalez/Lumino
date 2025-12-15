@@ -1,20 +1,25 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.urls import reverse
 
 from django.core.validators import MinValueValidator, MaxValueValidator
+
 
 class Subject(models.Model):
     code = models.CharField(unique=True)
     name = models.CharField()
     teacher = models.ForeignKey(get_user_model(), related_name='teaching', on_delete=models.PROTECT)
-    students = models.ManyToManyField(get_user_model(), related_name='enrolled', through='subjects.Enrollment')
+    students = models.ManyToManyField(
+        get_user_model(), related_name='enrolled', through='subjects.Enrollment'
+    )
+
+    ## def __init__(self, student, *args, **kwargs):
 
     def __str__(self, *args, **kwargs):
         return f'{self.code}'
 
-    # def get_absolute_url(self):
-    #     return reverse("subjects:subject-detail", kwargs={"subject_pk": self.pk})
-
+    def get_absolute_url(self):
+        return reverse('subjects:subject-detail', args={self})
 
 class Lesson(models.Model):
     subject = models.ForeignKey(Subject, related_name='lessons', on_delete=models.CASCADE)
