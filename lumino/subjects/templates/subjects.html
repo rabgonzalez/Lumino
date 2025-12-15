@@ -3,10 +3,17 @@
 
 {% block content %}
   <h2>{% translate 'My subjects' %}</h2>
-  {% for subject in subjects %}
-
-  {% empty %}
-  <p>{% translate 'No subjects yet' %}</p>
-  {% endfor %}
+  {% include 'messages.html' %}
+  <ul>
+    {% for module in modules %}
+    {% if user.profile.role == 'S' %}
+    <li>{{module.subject}}</li>
+    {% elif user.profile.role == 'T' %}
+    <li>{{module.code}}</li>
+    {% endif %}
+    {% empty %}
+    <p>{% translate 'No subjects yet' %}</p>
+    {% endfor %}
+  </ul>
 
 {% endblock %}
