@@ -5,8 +5,8 @@
   <h2>{% translate 'My subjects' %}</h2>
   {% include 'messages.html' %}
   {% if user.profile.role == 'S' %}
-  {% include 'student_subjects.html' %}
+    {% include 'student_subjects.html' %}
   {% elif user.profile.role == 'T' %}
-  {% include 'teacher_subjects.html' %}
+    {% include 'teacher_subjects.html' %}
   {% endif %}
 {% endblock %}

@@ -13,8 +13,6 @@ class Subject(models.Model):
         get_user_model(), related_name='enrolled', through='subjects.Enrollment'
     )
 
-    ## def __init__(self, student, *args, **kwargs):
-
     def __str__(self, *args, **kwargs):
         return f'{self.code}'
 

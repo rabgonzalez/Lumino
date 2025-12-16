@@ -13,25 +13,25 @@
 <a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
 
 {% if user.profile.role == 'T' %}
-<a href="">{% translate 'New lesson' %}</a>
+  <a href="">{% translate 'New lesson' %}</a>
 {% endif %}
 
 {% if subject.lessons %}
-<div class="lessons">
+  <div class="lessons">
 {% for lesson in subject.lessons.all %}
   <div class="lesson">
     <h5>{{lesson.title}}</h5>
     <div class="controls">
     <a href="">{% translate 'Details' %}</a>
     {% if user.profile.role == 'T' %}
-    <a href="">{% translate 'Edit lesson' %}</a>
-    <a href="">{% translate 'Delete lesson' %}</a>
+      <a href="">{% translate 'Edit lesson' %}</a>
+      <a href="">{% translate 'Delete lesson' %}</a>
     {% endif %}
     </div>
   </div>
 {% endfor %}
-</div>
+  </div>
 {% else %}
-<p>{% translate 'There is no lessons yet' %}</p>
+  <p>{% translate 'There is no lessons yet' %}</p>
 {% endif %}
 {% endblock %}
