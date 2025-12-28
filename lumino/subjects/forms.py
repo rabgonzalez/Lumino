@@ -1,7 +1,12 @@
 from django import forms
-from .models import Subject, Enrollment
+from .models import Subject, Enrollment, Lesson
 from django.shortcuts import render
 from django.forms import modelformset_factory
+
+class LessonsForm(forms.ModelForm):
+    class Meta:
+        model = Lesson
+        fields = ['title', 'content']
 
 class EnrollSubjectsForm(forms.Form):
     subjects = forms.ModelMultipleChoiceField(

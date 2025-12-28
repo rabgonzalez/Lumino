@@ -13,7 +13,7 @@
 <a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
 
 {% if user.profile.role == 'T' %}
-  <a href="">{% translate 'New lesson' %}</a>
+  <a href="{% url 'subjects:add-lesson' subject %}">{% translate 'New lesson' %}</a>
 {% endif %}
 
 {% if subject.lessons %}
