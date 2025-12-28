@@ -4,8 +4,8 @@
     <a href="">{% translate 'Get your certificate of qualifications!' %}</a>
   </div>
 {% endif %}
-<a href="">{% translate 'Enroll in modules' %}</a>
-<a href="">{% translate 'Cancel modules' %}</a>
+<a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in modules' %}</a>
+<a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel modules' %}</a>
 <div class="modules">
   {% for module in modules %}
   <div class="module">

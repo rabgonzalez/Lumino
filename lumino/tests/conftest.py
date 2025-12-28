@@ -4,9 +4,7 @@ import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 
-from factories.auth import UserFactory
-from factories.subjects import SubjectFactory
-from factories.users import StudentFactory, TeacherFactory
+from factories import StudentFactory, SubjectFactory, TeacherFactory, UserFactory
 
 # ==============================================================================
 # URL Patterns

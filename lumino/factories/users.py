@@ -9,8 +9,7 @@ class ProfileFactory(factory.django.DjangoModelFactory):
     class Meta:
         model = Profile
 
-    user = factory.SubFactory(UserFactory)
-    avatar = factory.django.ImageField()
+    avatar = factory.django.ImageField(color=factory.Faker('color'))
     bio = factory.Faker('paragraph', nb_sentences=3)
 
 

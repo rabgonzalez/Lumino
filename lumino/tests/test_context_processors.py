@@ -1,6 +1,6 @@
 import pytest
 
-from factories.subjects import EnrollmentFactory, SubjectFactory
+from factories import EnrollmentFactory, SubjectFactory
 from tests import conftest
 
 

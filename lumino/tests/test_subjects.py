@@ -6,7 +6,7 @@ import pytest
 from django.core.mail import EmailMessage
 from pytest_django.asserts import assertContains, assertNotContains, assertRedirects
 
-from factories.subjects import EnrollmentFactory, LessonFactory, SubjectFactory
+from factories import EnrollmentFactory, LessonFactory, SubjectFactory
 from subjects.models import Enrollment
 from subjects.tasks import deliver_certificate
 from tests import conftest

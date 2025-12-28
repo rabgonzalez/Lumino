@@ -199,23 +199,3 @@ redis:
             pgrep -x Redis &> /dev/null || (open /Applications/Redis.app && sleep 2)
         fi
     fi
-
-makelocale:
-    #!/usr/bin/env bash
-    uv run manage.py shell -v0 -c '
-    from pathlib import Path
-    from django.conf import settings
-
-    for folder in settings.BASE_DIR.iterdir():
-        if folder.is_dir() and (folder / "apps.py").exists():
-            Path(folder / "locale").mkdir(exist_ok=True)
-    '
-    echo "✔ Each app folder has now a 'locale' folder" 
-
-# Make i18n messages
-makemessages locale="es":
-    uv run manage.py makemessages -l {{ locale }}
-
-# Compile i18n messages
-compilemessages:
-    uv run manage.py compilemessages -i .venv

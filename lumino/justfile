@@ -87,7 +87,7 @@ dbshell:
 
 # Setup new project
 [group('config')]
-setup: && migrate create-su set-tz
+setup: && migrate create-su set-tz set-media
     #!/usr/bin/env bash
     uv sync
     uv run django-admin startproject main .
@@ -100,6 +100,15 @@ set-tz timezone="Atlantic/Canary":
     if [ $? -eq 0 ]; then
         echo "✔ Fixed TIME_ZONE='{{ timezone }}' and LANGUAGE_CODE='es-es'"
     fi
+
+# Set media settings
+[group('config')]
+set-media:
+    #!/usr/bin/env bash
+    echo "" >> ./main/settings.py
+    echo "MEDIA_ROOT = BASE_DIR / 'media'" >> ./main/settings.py
+    echo "MEDIA_URL = 'media/'" >> ./main/settings.py
+    echo "✔ Media settings added to settings.py"
 
 # Remove migrations and database. Reset DB artefacts.
 [confirm("⚠️ All migrations and database will be removed. Continue? [yN]:")]
@@ -135,6 +144,14 @@ clean-data:
     Subject.objects.all().delete()
     User.objects.exclude(is_superuser=True).delete()
     ' 
+    sqlite3 db.sqlite3 '
+    delete from sqlite_sequence where
+    name="subjects_subject" or
+    name="subjects_lesson" or
+    name="subjects_enrollment" or
+    name="users_profile";
+    update sqlite_sequence set seq=1 where name="auth_user";
+    '
 
 # Show current users on database
 [group('data')]
@@ -170,7 +187,7 @@ clear-sorl:
 [private]
 gen-data: clean-data clear-sorl
     #!/usr/bin/env bash
-    rm -fr media/avatars/example_*.jpg
+    rm -fr media/avatars/example*.jpg
     uv run manage.py gen_data
     echo "✔ Fake data generated and loaded into database."
 

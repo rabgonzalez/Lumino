@@ -1,11 +1,25 @@
+import importlib
+
 import pytest
 
-from factories.subjects import SubjectRelatedFactory
-from subjects.management.commands import get_subject_stats
+from factories import SubjectRelatedFactory
+
+
+@pytest.mark.order(1)
+@pytest.mark.dependency()
+def test_import_management_command_to_show_subject_stats():
+    MODULE_PATH = 'subjects.management.commands.get_subject_stats'
+    try:
+        importlib.import_module(MODULE_PATH)
+    except ModuleNotFoundError:
+        pytest.fail(f'No existe el módulo {MODULE_PATH}')
 
 
 @pytest.mark.django_db
+@pytest.mark.dependency(depends=['test_import_management_command_to_show_subject_stats'])
 def test_management_command_to_show_subject_stats(capsys):
+    from subjects.management.commands import get_subject_stats
+
     NUM_SUBJECTS = 5
     NUM_ENROLLMENTS_PER_SUBJECT = 10
 
@@ -29,8 +43,11 @@ def test_management_command_to_show_subject_stats(capsys):
     assert captured.out.strip() == excected_output
 
 
+@pytest.mark.dependency(depends=['test_import_management_command_to_show_subject_stats'])
 @pytest.mark.django_db
 def test_management_command_to_show_subject_stats_when_no_marks_exist(capsys):
+    from subjects.management.commands import get_subject_stats
+
     NUM_SUBJECTS = 3
     NUM_ENROLLMENTS_PER_SUBJECT = 5
 

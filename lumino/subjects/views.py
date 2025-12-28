@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from .models import Subject
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden, HttpResponseBadRequest
-from .forms import UnenrollSubjectForm
+from .forms import UnenrollSubjectsForm, EnrollSubjectsForm
 
 STUDENT = 'S'
 TEACHER = 'T'
@@ -44,13 +44,47 @@ def subject_detail(request, subject: Subject):
     return render(request, 'subject_detail.html', dict(subject=subject, mark=mark))
 
 @login_required
-def unenroll_subjects(request):
+def lesson_detail(request):
+    pass
+
+@login_required
+def edit_lesson(request):
+    pass
+
+@login_required
+def delete_lesson(request):
+    pass
+
+@login_required
+def mark_list(request):
+    pass
+
+@login_required
+def edit_marks(request):
+    pass
+
+@login_required
+def enroll_subjects(request):
     if request.method == 'POST':
-        if(form := UnenrollSubjectForm(request.POST, user=request.user)).is_valid():
-            subjects_to_remove = form.cleaned_data['subjects']
-            for subject in subjects_to_remove:
-                request.user.enrolled.remove(subject.id)
+        if(form := EnrollSubjectsForm(request.POST, student=request.user)).is_valid():
+            subjects_to_enroll = form.cleaned_data['subjects']
+            request.user.enrolled.add(*subjects_to_enroll)
             return redirect(FALLBACK_REDIRECT)
     else:
-        form = UnenrollSubjectForm(user=request.user)
+        form = EnrollSubjectsForm(student=request.user)
     return render(request, 'enrollment_form.html', dict(form=form))
+
+@login_required
+def unenroll_subjects(request):
+    if request.method == 'POST':
+        if(form := UnenrollSubjectsForm(request.POST, student=request.user)).is_valid():
+            subjects_to_remove = form.cleaned_data['subjects']
+            request.user.enrolled.remove(*subjects_to_remove)
+            return redirect(FALLBACK_REDIRECT)
+    else:
+        form = UnenrollSubjectsForm(student=request.user)
+    return render(request, 'enrollment_form.html', dict(form=form))
+
+@login_required
+def request_certificate(request):
+    pass

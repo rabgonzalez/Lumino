@@ -34,13 +34,18 @@ def test_required_apps_are_installed():
 
 @pytest.mark.django_db
 def test_subject_model_is_correctly_configured():
+    # code
     assert (f := Subject._meta.get_field('code')), 'Subject.code no se ha definido'
     assert f.get_internal_type() == 'CharField', 'Subject.code no tiene el tipo esperado'
     assert f.unique, 'Subject.code no se ha definido como único'
+    assert not f.blank, 'Subject.code no debe admitir valores en blanco'
 
+    # name
     assert (f := Subject._meta.get_field('name')), 'Subject.name no se ha definido'
     assert f.get_internal_type() == 'CharField', 'Subject.name no tiene el tipo esperado'
+    assert not f.blank, 'Subject.name no debe admitir valores en blanco'
 
+    # teacher
     assert (f := Subject._meta.get_field('teacher')), 'Subject.teacher no se ha definido'
     assert f.get_internal_type() == 'ForeignKey', 'Subject.teacher no tiene el tipo esperado'
     assert f.related_model == User, 'Subject.teacher no referencia al modelo esperado'
@@ -50,7 +55,9 @@ def test_subject_model_is_correctly_configured():
     assert f.remote_field.on_delete.__name__ == 'PROTECT', (
         'Subject.teacher no tiene el método de borrado esperado'
     )
+    assert not f.blank, 'Subject.teacher no debe admitir valores en blanco'
 
+    # students
     assert (f := Subject._meta.get_field('students')), 'Subject.students no se ha definido'
     assert f.get_internal_type() == 'ManyToManyField', 'Subject.students no tiene el tipo esperado'
     assert f.related_model == User, 'Subject.students no referencia al modelo esperado'
@@ -69,6 +76,7 @@ def test_subject_model_is_correctly_configured():
 
 @pytest.mark.django_db
 def test_lesson_model_is_correctly_configured():
+    # subject
     assert (f := Lesson._meta.get_field('subject')), 'Lesson.subject no se ha definido'
     assert f.get_internal_type() == 'ForeignKey', 'Lesson.subject no tiene el tipo esperado'
     assert f.related_model == Subject, 'Lesson.subject no referencia al modelo esperado'
@@ -78,10 +86,14 @@ def test_lesson_model_is_correctly_configured():
     assert f.remote_field.on_delete.__name__ == 'CASCADE', (
         'Lesson.subject no tiene el método de borrado esperado'
     )
+    assert not f.blank, 'Lesson.subject no debe admitir valores en blanco'
 
+    # title
     assert (f := Lesson._meta.get_field('title')), 'Lesson.title no se ha definido'
     assert f.get_internal_type() == 'CharField', 'Lesson.title no tiene el tipo esperado'
+    assert not f.blank, 'Lesson.title no debe admitir valores en blanco'
 
+    # content
     assert (f := Lesson._meta.get_field('content')), 'Lesson.content no se ha definido'
     assert f.get_internal_type() == 'TextField', 'Lesson.content no tiene el tipo esperado'
     assert f.blank, 'Lesson.content no admite valores en blanco'
@@ -94,6 +106,7 @@ def test_lesson_model_is_correctly_configured():
 
 @pytest.mark.django_db
 def test_enrollment_model_is_correctly_configured():
+    # student
     assert (f := Enrollment._meta.get_field('student')), 'Enrollment.student no se ha definido'
     assert f.get_internal_type() == 'ForeignKey', 'Enrollment.student no tiene el tipo esperado'
     assert f.related_model == User, 'Enrollment.student no referencia al modelo esperado'
@@ -103,7 +116,9 @@ def test_enrollment_model_is_correctly_configured():
     assert f.remote_field.on_delete.__name__ == 'CASCADE', (
         'Enrollment.student no tiene el método de borrado esperado'
     )
+    assert not f.blank, 'Enrollment.student no debe admitir valores en blanco'
 
+    # subject
     assert (f := Enrollment._meta.get_field('subject')), 'Enrollment.subject no se ha definido'
     assert f.get_internal_type() == 'ForeignKey', 'Enrollment.subject no tiene el tipo esperado'
     assert f.related_model == Subject, 'Enrollment.subject no referencia al modelo esperado'
@@ -113,13 +128,16 @@ def test_enrollment_model_is_correctly_configured():
     assert f.remote_field.on_delete.__name__ == 'CASCADE', (
         'Enrollment.subject no tiene el método de borrado esperado'
     )
+    assert not f.blank, 'Enrollment.subject no debe admitir valores en blanco'
 
+    # enrolled_at
     assert (f := Enrollment._meta.get_field('enrolled_at')), (
         'Enrollment.enrolled_at no se ha definido'
     )
     assert f.get_internal_type() == 'DateField', 'Enrollment.enrolled_at no tiene el tipo esperado'
     assert f.auto_now_add, 'Enrollment.enrolled_at no está configurado con auto_now_add'
 
+    # mark
     assert (f := Enrollment._meta.get_field('mark')), 'Enrollment.mark no se ha definido'
     assert f.get_internal_type() == 'PositiveSmallIntegerField', (
         'Enrollment.mark no tiene el tipo esperado'
@@ -147,20 +165,25 @@ def test_enrollment_model_is_correctly_configured():
 
 @pytest.mark.django_db
 def test_profile_model_is_correctly_configured():
+    # user
     assert (f := Profile._meta.get_field('user')), 'Profile.user no se ha definido'
     assert f.get_internal_type() == 'OneToOneField', 'Profile.user no tiene el tipo esperado'
     assert f.related_model == User, 'Profile.user no referencia al modelo esperado'
     assert f.remote_field.on_delete.__name__ == 'CASCADE', (
         'Profile.user no tiene el método de borrado esperado'
     )
+    assert not f.blank, 'Profile.user no debe admitir valores en blanco'
 
+    # role
     assert (f := Profile._meta.get_field('role')), 'Profile.role no se ha definido'
     assert f.get_internal_type() == 'CharField', 'Profile.role no tiene el tipo esperado'
     assert f.max_length == 1, 'Profile.role no tiene la longitud máxima esperada'
     assert f.choices == [('S', 'Student'), ('T', 'Teacher')], (
         'Profile.role no tiene las opciones esperadas'
     )
+    assert not f.blank, 'Profile.role no debe admitir valores en blanco'
 
+    # avatar
     assert (f := Profile._meta.get_field('avatar')), 'Profile.avatar no se ha definido'
     assert f.get_internal_type() in ['FileField', 'ImageField'], (
         'Profile.avatar no tiene el tipo esperado'
@@ -171,6 +194,7 @@ def test_profile_model_is_correctly_configured():
     )
     assert f.blank, 'Profile.avatar no admite valores en blanco'
 
+    # bio
     assert (f := Profile._meta.get_field('bio')), 'Profile.bio no se ha definido'
     assert f.get_internal_type() == 'TextField', 'Profile.bio no tiene el tipo esperado'
     assert f.blank, 'Profile.bio no admite valores en blanco'
