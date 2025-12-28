@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Subject
+from .models import Subject, Lesson
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseForbidden, HttpResponseBadRequest
@@ -60,17 +60,17 @@ def add_lesson(request, subject: Subject):
     return render(request, 'enrollment_form.html', dict(form=form))
 
 @login_required
-def lesson_detail(request):
+def lesson_detail(request, subject: Subject, lesson: Lesson):
     pass
 
 @login_required
-def edit_lesson(request):
+def edit_lesson(request, subject: Subject, lesson: Lesson):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
     pass
 
 @login_required
-def delete_lesson(request):
+def delete_lesson(request, subject: Subject, lesson: Lesson):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
     pass
@@ -82,7 +82,7 @@ def mark_list(request, subject: Subject):
     pass
 
 @login_required
-def edit_marks(request):
+def edit_marks(request, subject: Subject):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
     pass

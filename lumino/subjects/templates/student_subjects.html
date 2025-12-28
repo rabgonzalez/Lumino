@@ -1,7 +1,7 @@
 {% load i18n %}
 {% if certificate %}
   <div class="certificate">
-    <a href="">{% translate 'Get your certificate of qualifications!' %}</a>
+    <a href="{% url 'subjects:request-certificate' %}">{% translate 'Get your certificate of qualifications!' %}</a>
   </div>
 {% endif %}
 <a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in modules' %}</a>

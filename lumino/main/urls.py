@@ -2,11 +2,12 @@ from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import include, path
 import shared.views
+import django.views.i18n
 
 urlpatterns = (
     [
         path('i18n/', include('django.conf.urls.i18n')),
-        path('setlang/<str:langcode>/', shared.views.setlang, name='setlang'),
+        path('setlang/<str:langcode>/', django.views.i18n.set_language, name='setlang'),
     ]
     + i18n_patterns(
         path('admin/', admin.site.urls),
