@@ -5,7 +5,9 @@
   </div>
 {% endif %}
 <a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in modules' %}</a>
-<a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel modules' %}</a>
+{% if modules %}
+  <a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel modules' %}</a>
+{% endif %}
 <div class="modules">
   {% for module in modules %}
   <div class="module">

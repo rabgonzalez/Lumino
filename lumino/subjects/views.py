@@ -15,22 +15,16 @@ def subject_list(request):
     if request.user.profile.role == STUDENT:
         return student_subject_list(request)
     elif request.user.profile.role == TEACHER:
-        return teacher_subject_list(request)
+        return render(request, 'subjects.html')
 
 @login_required
 def student_subject_list(request):
-    modules = request.user.enrollments.all()
     modules_with_mark = request.user.enrollments.filter(mark__isnull = False).count()
     if modules_with_mark == request.user.enrollments.count():
         certificate = True
     else:
         certificate = False
-    return render(request, 'subjects.html', dict(modules=modules, certificate=certificate))
-
-@login_required
-def teacher_subject_list(request):
-    subjects = request.user.teaching.all()
-    return render(request, 'subjects.html', dict(subjects=subjects))
+    return render(request, 'subjects.html', dict(certificate=certificate))    
 
 @login_required
 def subject_detail(request, subject: Subject):
