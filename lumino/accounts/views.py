@@ -24,7 +24,7 @@ def user_login(request):
             return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
     else:
         form = AuthenticationForm()
-    return render(request, 'form.html', {'form': form, 'type':'login'})
+    return render(request, 'auth_form.html', {'form': form, 'type':'login'})
 
 @login_required
 def user_logout(request):
@@ -44,4 +44,4 @@ def user_signup(request):
             return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
     else:
         form = UserSignupForm()
-    return render(request, 'form.html', {'form': form, 'type':'signup'})
+    return render(request, 'auth_form.html', {'form': form, 'type':'signup'})

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-12-15 14:48+0000\n"
+"POT-Creation-Date: 2026-01-02 13:51+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: accounts/templates/form.html:7
+#: accounts/templates/auth_form.html:7
 msgid "Login"
 msgstr "Iniciar Sesión"
 
-#: accounts/templates/form.html:9
+#: accounts/templates/auth_form.html:9
 msgid "Signup"
 msgstr "Registrarse"
 
-#: accounts/templates/form.html:15 accounts/templates/form.html:19
+#: accounts/templates/auth_form.html:15 accounts/templates/auth_form.html:19
 msgid "login"
 msgstr "iniciar sesión"
 
-#: accounts/templates/form.html:16 accounts/templates/form.html:18
+#: accounts/templates/auth_form.html:16 accounts/templates/auth_form.html:18
 msgid "signup"
 msgstr "registrarse"
 

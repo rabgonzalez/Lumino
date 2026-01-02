@@ -55,10 +55,11 @@ def add_lesson(request, subject: Subject):
             lesson = form.save(commit=False)
             lesson.subject = subject
             lesson.save()
-            messages.success(request, 'Lesson was successfully added')
+            msg = _('Lesson was successfully added')
+            messages.success(request, msg)
             return redirect('subjects:subject-list')
     form = LessonsForm()
-    return render(request, 'enrollment_form.html', dict(form=form))
+    return render(request, 'form.html', dict(form=form))
 
 @login_required
 def lesson_detail(request, subject: Subject, lesson: Lesson):
@@ -69,13 +70,26 @@ def lesson_detail(request, subject: Subject, lesson: Lesson):
 def edit_lesson(request, subject: Subject, lesson: Lesson):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
-    pass
+    user_not_in_module(request, subject)
+    if request.method == 'POST':
+        if(form := LessonsForm(request.POST, instance=lesson)).is_valid():
+            form.save()
+            msg = _('Changes were successfully saved')
+            messages.success(request, msg)
+    form = LessonsForm(instance=lesson)
+    return render(request, 'form.html', dict(form=form))
+    
 
 @login_required
 def delete_lesson(request, subject: Subject, lesson: Lesson):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
-    pass
+    user_not_in_module(request, subject)
+    lesson.delete()
+    msg = _('Lesson was successfully deleted')
+    messages.success(request, msg)
+    return redirect(subject)
+    
 
 @login_required
 def mark_list(request, subject: Subject):
@@ -100,7 +114,7 @@ def enroll_subjects(request):
             return redirect(FALLBACK_REDIRECT)
     else:
         form = EnrollSubjectsForm(student=request.user)
-    return render(request, 'enrollment_form.html', dict(form=form))
+    return render(request, 'form.html', dict(form=form))
 
 @login_required
 def unenroll_subjects(request):
@@ -113,7 +127,7 @@ def unenroll_subjects(request):
             return redirect(FALLBACK_REDIRECT)
     else:
         form = UnenrollSubjectsForm(student=request.user)
-    return render(request, 'enrollment_form.html', dict(form=form))
+    return render(request, 'form.html', dict(form=form))
 
 @login_required
 def request_certificate(request):
