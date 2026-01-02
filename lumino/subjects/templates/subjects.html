@@ -3,7 +3,6 @@
 
 {% block content %}
   <h2>{% translate 'My subjects' %}</h2>
-  {% include 'messages.html' %}
   {% if user.profile.role == 'S' %}
     {% include 'student_subjects.html' %}
   {% elif user.profile.role == 'T' %}

@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+  <h2>{{subject.code}} {% translate 'marks' %}</h2>
+  <a href={{ subject.get_absolute_url }}>{% translate 'Go back' %}</a>
+  <a href="{% url 'subjects:edit-marks' subject %}">{% translate 'Edit marks' %}</a>
+    {% for module in modules %}
+      <p>{{module.student.last_name}}, {{module.student.username|capfirst}}: {{module.mark}}</p>
+    {% empty %}
+      <p>{% translate "This subject is empty" %}</p>
+    {% endfor %}
+{% endblock %}

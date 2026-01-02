@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-02 14:01+0000\n"
+"POT-Creation-Date: 2026-01-02 15:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,24 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: subjects/templates/lesson_detail.html:10
+#: subjects/templates/lesson_detail.html:10 subjects/templates/mark_list.html:6
 #: subjects/templates/subject_detail.html:13
 msgid "Go back"
 msgstr "Atrás"
+
+#: subjects/templates/mark_list.html:5
+msgid "marks"
+msgstr "notas"
+
+#: subjects/templates/mark_list.html:7
+msgid "Edit marks"
+msgstr "Editar notas"
+
+#: subjects/templates/mark_list.html:11
+#, fuzzy
+#| msgid "No subjects yet"
+msgid "This subject is empty"
+msgstr "Todavía no hay módulos"
 
 #: subjects/templates/student_subjects.html:4
 msgid "Get your certificate of qualifications!"
@@ -37,7 +51,7 @@ msgid "Cancel modules"
 msgstr "Darse de baja en módulos"
 
 #: subjects/templates/student_subjects.html:15
-#: subjects/templates/subject_detail.html:25
+#: subjects/templates/subject_detail.html:26
 #: subjects/templates/teacher_subjects.html:6
 msgid "Details"
 msgstr "Detalles"
@@ -57,18 +71,22 @@ msgid "Teacher:"
 msgstr "Profesor/a:"
 
 #: subjects/templates/subject_detail.html:16
+msgid "See all marks"
+msgstr "Ver las notas"
+
+#: subjects/templates/subject_detail.html:17
 msgid "New lesson"
 msgstr "Nueva lección"
 
-#: subjects/templates/subject_detail.html:27
+#: subjects/templates/subject_detail.html:28
 msgid "Edit lesson"
 msgstr "Editar lección"
 
-#: subjects/templates/subject_detail.html:28
+#: subjects/templates/subject_detail.html:29
 msgid "Delete lesson"
 msgstr "Eliminar lección"
 
-#: subjects/templates/subject_detail.html:35
+#: subjects/templates/subject_detail.html:36
 msgid "There is no lessons yet"
 msgstr "Todavía no hay lecciones"
 

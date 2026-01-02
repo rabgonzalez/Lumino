@@ -1,11 +1,12 @@
 from django.shortcuts import redirect, render
-from .models import Subject, Lesson
+from .models import Subject, Lesson, Enrollment
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
-from django.http import HttpResponseForbidden, HttpResponseBadRequest
-from .forms import UnenrollSubjectsForm, EnrollSubjectsForm, LessonsForm
+from django.http import HttpResponseForbidden
+from .forms import UnenrollSubjectsForm, EnrollSubjectsForm, LessonsForm, EditMarkForm
 from django.contrib import messages
 from django.utils.translation import gettext as _
+from django.forms import modelformset_factory
 
 STUDENT = 'S'
 TEACHER = 'T'
@@ -95,13 +96,22 @@ def delete_lesson(request, subject: Subject, lesson: Lesson):
 def mark_list(request, subject: Subject):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
-    pass
+    user_not_in_module(request, subject)
+    modules = subject.enrollments.all()
+    return render(request, 'mark_list.html', dict(modules=modules, subject=subject))
 
 @login_required
 def edit_marks(request, subject: Subject):
     if request.user.profile.role != TEACHER:
         raise PermissionDenied
-    pass
+    user_not_in_module(request, subject)
+    MarkFormSet = modelformset_factory(Enrollment, EditMarkForm, extra=0)
+    queryset = subject.enrollments.all()
+    if request.method == 'POST':
+        if (formset := MarkFormSet(queryset=queryset, data=request.POST)).is_valid():
+            formset.save()
+    formset = MarkFormSet(queryset=queryset)
+    return render(request, 'form.html', dict(form=formset, subject=subject))
 
 @login_required
 def enroll_subjects(request):

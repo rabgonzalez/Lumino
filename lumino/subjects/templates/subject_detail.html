@@ -3,7 +3,7 @@
 
 {% block content %}
 {% if user.profile.role == 'S' and mark %}
-    <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>
+  <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>
 {% endif %}
 
 <h1>{{subject.code}}</h1>
@@ -13,6 +13,7 @@
 <a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
 
 {% if user.profile.role == 'T' %}
+  <a href="{% url 'subjects:mark-list' subject %}">{% translate 'See all marks' %}</a>
   <a href="{% url 'subjects:add-lesson' subject %}">{% translate 'New lesson' %}</a>
 {% endif %}
 

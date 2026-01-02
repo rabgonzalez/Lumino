@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<form method="post" novalidate>
+  {% csrf_token %}
+  {% for field in form %}
+    <div class="fieldWrapper">
+        {{ field.errors }}
+        <h5>{{ field.instance.student.username|capfirst }}</h5>
+        {{ field.label_tag }} {{ field }}
+    </div>
+  {% endfor %}
+  <input type="submit" value="{% translate 'Save' %}">
+</form>
+{% endblock %}
