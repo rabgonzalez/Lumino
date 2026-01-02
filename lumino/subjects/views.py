@@ -5,10 +5,21 @@ from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseForbidden, HttpResponseBadRequest
 from .forms import UnenrollSubjectsForm, EnrollSubjectsForm, LessonsForm
 from django.contrib import messages
+from django.utils.translation import gettext as _
 
 STUDENT = 'S'
 TEACHER = 'T'
 FALLBACK_REDIRECT = 'index'
+FORBIDDEN_MESSAGE = _("You don't have access")
+
+def user_not_in_module(request, subject: Subject):
+    if request.user.profile.role == STUDENT:
+        if not request.user.enrollments.filter(subject=subject):
+            return HttpResponseForbidden(FORBIDDEN_MESSAGE)
+        
+    elif request.user.profile.role == TEACHER:
+        if subject.teacher != request.user:
+            return HttpResponseForbidden(FORBIDDEN_MESSAGE)    
 
 @login_required
 def subject_list(request):
@@ -28,15 +39,11 @@ def student_subject_list(request):
 
 @login_required
 def subject_detail(request, subject: Subject):
+    user_not_in_module(request, subject)
     if request.user.profile.role == STUDENT:
         mark = request.user.enrollments.filter(subject=subject).get().mark
-        if not request.user.enrollments.filter(subject=subject):
-            return HttpResponseForbidden("You don't have access")
     elif request.user.profile.role == TEACHER:
         mark = None
-        if subject.teacher != request.user:
-            return HttpResponseForbidden("You don't have access")
-
     return render(request, 'subject_detail.html', dict(subject=subject, mark=mark))
 
 @login_required
@@ -55,7 +62,8 @@ def add_lesson(request, subject: Subject):
 
 @login_required
 def lesson_detail(request, subject: Subject, lesson: Lesson):
-    pass
+    user_not_in_module(request, subject)
+    return render(request, 'lesson_detail.html', dict(subject=subject, lesson=lesson))
 
 @login_required
 def edit_lesson(request, subject: Subject, lesson: Lesson):

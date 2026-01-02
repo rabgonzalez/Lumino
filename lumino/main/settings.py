@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
     'users.apps.UsersConfig',
     'subjects.apps.SubjectsConfig',
+    'markdownify.apps.MarkdownifyConfig',
 ]
 
 MIDDLEWARE = [

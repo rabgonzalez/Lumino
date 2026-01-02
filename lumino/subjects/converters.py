@@ -14,7 +14,7 @@ class LessonConverter:
     regex = '[0-9]+'
 
     def to_python(self, lesson_pk: int) -> Lesson:
-        return get_object_or_404(Lesson, code=lesson_pk)
+        return get_object_or_404(Lesson, pk=lesson_pk)
     
     def to_url(self, lesson: Lesson) -> int:
         return lesson.pk

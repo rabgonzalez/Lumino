@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load markdownify %}
+
+{% block content %}
+<h1>{{ lesson.title }}</h1>
+<p>{{ lesson.content|markdownify }}</p>
+
+<div class="controls">
+  <a href="{{ subject.get_absolute_url }}">{% translate 'Go back' %}</a>
+  {% if subject.teacher == request.user %}
+    <a href="{% url 'subjects:edit-lesson' subject lesson %}"><i class="bi bi-pencil-square"></i></a>
+    <a href="{% url 'subjects:delete-lesson' subject lesson %}"><i class="bi bi-trash3-fill"></i></a>
+  {% endif %}
+</div>
+{% endblock %}
+ 
