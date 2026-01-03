@@ -7,6 +7,7 @@ from .forms import UnenrollSubjectsForm, EnrollSubjectsForm, LessonsForm, EditMa
 from django.contrib import messages
 from django.utils.translation import gettext as _
 from django.forms import modelformset_factory
+from .tasks import deliver_certificate
 
 STUDENT = 'S'
 TEACHER = 'T'
@@ -143,4 +144,7 @@ def unenroll_subjects(request):
 def request_certificate(request):
     if request.user.profile.role == TEACHER:
         raise PermissionDenied
-    pass
+    if request.user.enrollments.filter(mark__isnull = True).count() > 0:
+        raise PermissionDenied
+    deliver_certificate.delay(request.build_absolute_uri(), request.user)
+    return render(request, 'deliver_certificate.html')

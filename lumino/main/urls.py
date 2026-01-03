@@ -8,6 +8,7 @@ urlpatterns = (
     [
         path('i18n/', include('django.conf.urls.i18n')),
         path('setlang/<str:langcode>/', django.views.i18n.set_language, name='setlang'),
+        path('django-rq/', include('django_rq.urls')),
     ]
     + i18n_patterns(
         path('admin/', admin.site.urls),

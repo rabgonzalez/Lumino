@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-02 15:53+0000\n"
+"POT-Creation-Date: 2026-01-03 18:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,10 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
+#: subjects/templates/deliver_certificate.html:4
+msgid "You will get the grade certificate quite soon at"
+msgstr "Obtendrás tu certificado en"
+
 #: subjects/templates/lesson_detail.html:10 subjects/templates/mark_list.html:6
 #: subjects/templates/subject_detail.html:13
 msgid "Go back"
 msgstr "Atrás"
+
+#: subjects/templates/mark_form.html:14
+msgid "Save"
+msgstr "Guardar"
 
 #: subjects/templates/mark_list.html:5
 msgid "marks"
@@ -98,19 +106,19 @@ msgstr "Mis módulos"
 msgid "No subjects yet"
 msgstr "Todavía no hay módulos"
 
-#: subjects/views.py:13
+#: subjects/views.py:15
 msgid "You don't have access"
 msgstr "No tienes acceso"
 
-#: subjects/views.py:58
+#: subjects/views.py:60
 msgid "Lesson was successfully added"
 msgstr "La lección fue añadida"
 
-#: subjects/views.py:77
+#: subjects/views.py:79
 msgid "Changes were successfully saved"
 msgstr "Los cambios fueron guardados"
 
-#: subjects/views.py:89
+#: subjects/views.py:91
 #, fuzzy
 #| msgid "Lesson was successfully added"
 msgid "Lesson was successfully deleted"

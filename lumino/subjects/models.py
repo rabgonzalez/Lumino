@@ -4,7 +4,6 @@ from django.urls import reverse
 
 from django.core.validators import MinValueValidator, MaxValueValidator
 
-
 class Subject(models.Model):
     code = models.CharField(unique=True)
     name = models.CharField()
