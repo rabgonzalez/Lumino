@@ -18,31 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
+#: users/templates/user_profile.html:8
+msgid "Edit profile"
+msgstr ""
 
-#: shared/templates/form.html:8
-msgid "Save"
-msgstr "Guardar"
-
-#: shared/templates/header.html:11
-msgid "Subjects"
-msgstr "Asignaturas"
-
-#: shared/templates/header.html:12
-msgid "Profile"
-msgstr "Perfil"
-
-#: shared/templates/header.html:13
-msgid "logout"
-msgstr "cerrar sesión"
-
-#: shared/templates/index.html:5
-msgid "Join Lumino. The cool education platform!"
-msgstr "Únete a Lumnio. La mejor plataforma de educación"
-
-#: shared/templates/index.html:7
-msgid "login"
-msgstr "iniciar sesión"
-
-#: shared/templates/index.html:8
-msgid "signup"
-msgstr "registrarse"
+#: users/templates/user_profile.html:10
+msgid "Leave platform"
+msgstr ""

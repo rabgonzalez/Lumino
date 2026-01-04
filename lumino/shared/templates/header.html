@@ -8,6 +8,8 @@
 {% if user.is_authenticated %}
 <div class="auth">
     <p>{{user}}</p>
+    <a href="{% url 'subjects:subject-list' %}">{% translate 'Subjects' %}</a>
+    <a href="{% url 'users:user-detail' request.user.profile %}">{% translate 'Profile' %}</a>
     <a href="{% url 'accounts:logout' %}">{% translate 'logout' %}</a>
 </div>
 {% endif %}

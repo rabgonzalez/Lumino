@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<h3>{{ profile.user.username |capfirst }} {{ profile.user.lastname }}</h3>
+<h5>{{ profile.user.email }}</h5>
+<h4>{{ profile.role.get_category_display }}</h4>
+<div class="controls">
+  <a href="">{% translate 'Edit profile' %}</a>
+  {% if profile.role == 'S' %}
+    <a href="">{% translate 'Leave platform' %}</a>
+  {% endif %}
+</div>
+<p>{{ profile.bio }}</p>
+{% endblock %}

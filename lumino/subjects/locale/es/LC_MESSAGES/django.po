@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-04 18:12+0000\n"
+"POT-Creation-Date: 2026-01-04 18:48+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,15 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
-
-#: subjects/tasks.py:14
-#, python-brace-format
-msgid "{name} grades certificate"
-msgstr "certificado de notas de {name}"
-
-#: subjects/tasks.py:15
-msgid "This is a body"
-msgstr "Esto es un cuerpo de mensaje"
 
 #: subjects/templates/deliver_certificate.html:4
 msgid "You will get the grade certificate quite soon at"
@@ -132,3 +123,10 @@ msgstr "Los cambios fueron guardados"
 #| msgid "Lesson was successfully added"
 msgid "Lesson was successfully deleted"
 msgstr "La lección fue eliminada"
+
+#, python-brace-format
+#~ msgid "{name} grades certificate"
+#~ msgstr "certificado de notas de {name}"
+
+#~ msgid "This is a body"
+#~ msgstr "Esto es un cuerpo de mensaje"

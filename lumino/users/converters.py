@@ -2,7 +2,7 @@ from django.shortcuts import get_object_or_404
 from .models import Profile
 
 class ProfileConverter:
-    regex = '[A-Z]{3}'
+    regex = '\w+'
 
     def to_python(self, profile_username: str) -> Profile:
         return get_object_or_404(Profile, user__username=profile_username)
