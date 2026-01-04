@@ -1,7 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load thumbnail %}
+
 {% block content %}
 <h3>{{ profile.user.username |capfirst }} {{ profile.user.lastname }}</h3>
+{% thumbnail profile.avatar "200x200" crop="center" format="PNG" as thumb %}
+    <img src="{{ thumb.url }}" alt="{{profile.user.username}} {% translate 'profile cover' %}">
+{% endthumbnail %}
 <h5>{{ profile.user.email }}</h5>
 <h4>{{ profile.role.get_category_display }}</h4>
 <div class="controls">

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'subjects.apps.SubjectsConfig',
     'markdownify.apps.MarkdownifyConfig',
     'django_rq',
+    'sorl.thumbnail',
 ]
 
 RQ_QUEUES = {

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-04 19:33+0000\n"
+"POT-Creation-Date: 2026-01-04 19:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,10 +20,14 @@ msgstr ""
 "1 : 2;\n"
 
 #: users/templates/user_profile.html:8
+msgid "profile cover"
+msgstr "foto de perfil"
+
+#: users/templates/user_profile.html:13
 msgid "Edit profile"
 msgstr "Editar perfil"
 
-#: users/templates/user_profile.html:10
+#: users/templates/user_profile.html:15
 msgid "Leave platform"
 msgstr "Abandonar la página"
 
