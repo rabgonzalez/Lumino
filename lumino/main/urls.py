@@ -12,7 +12,7 @@ urlpatterns = (
     ]
     + i18n_patterns(
         path('admin/', admin.site.urls),
-        path('', shared.views.index, name="index"),
+        path('', shared.views.index, name='index'),
         path('', include('accounts.urls')),
         path('subjects/', include('subjects.urls')),
         path('users/', include('users.urls')),

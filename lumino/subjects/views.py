@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import Subject, Lesson, Enrollment
+from users.models import Profile
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseForbidden
@@ -9,31 +10,29 @@ from django.utils.translation import gettext as _
 from django.forms import modelformset_factory
 from .tasks import deliver_certificate
 
-STUDENT = 'S'
-TEACHER = 'T'
 FALLBACK_REDIRECT = 'index'
 FORBIDDEN_MESSAGE = _("You don't have access")
 
 def user_not_in_module(request, subject: Subject):
-    if request.user.profile.role == STUDENT:
+    if request.user.profile.role == Profile.Role.STUDENT:
         if not request.user.enrollments.filter(subject=subject):
             return HttpResponseForbidden(FORBIDDEN_MESSAGE)
         
-    elif request.user.profile.role == TEACHER:
+    elif request.user.profile.role == Profile.Role.TEACHER:
         if subject.teacher != request.user:
             return HttpResponseForbidden(FORBIDDEN_MESSAGE)    
 
 @login_required
 def subject_list(request):
-    if request.user.profile.role == STUDENT:
+    if request.user.profile.role == Profile.Role.STUDENT:
         return student_subject_list(request)
-    elif request.user.profile.role == TEACHER:
+    elif request.user.profile.role == Profile.Role.TEACHER:
         return render(request, 'subjects.html')
 
 @login_required
 def student_subject_list(request):
     modules_with_mark = request.user.enrollments.filter(mark__isnull = False).count()
-    if modules_with_mark == request.user.enrollments.count():
+    if modules_with_mark == request.user.enrollments.count() and modules_with_mark > 0:
         certificate = True
     else:
         certificate = False
@@ -42,15 +41,15 @@ def student_subject_list(request):
 @login_required
 def subject_detail(request, subject: Subject):
     user_not_in_module(request, subject)
-    if request.user.profile.role == STUDENT:
+    if request.user.profile.role == Profile.Role.STUDENT:
         mark = request.user.enrollments.filter(subject=subject).get().mark
-    elif request.user.profile.role == TEACHER:
+    elif request.user.profile.role == Profile.Role.TEACHER:
         mark = None
     return render(request, 'subject_detail.html', dict(subject=subject, mark=mark))
 
 @login_required
 def add_lesson(request, subject: Subject):
-    if request.user.profile.role != TEACHER:
+    if request.user.profile.role != Profile.Role.TEACHER:
         raise PermissionDenied
     if request.method == 'POST':
         if(form := LessonsForm(request.POST)).is_valid():
@@ -70,7 +69,7 @@ def lesson_detail(request, subject: Subject, lesson: Lesson):
 
 @login_required
 def edit_lesson(request, subject: Subject, lesson: Lesson):
-    if request.user.profile.role != TEACHER:
+    if request.user.profile.role != Profile.Role.TEACHER:
         raise PermissionDenied
     user_not_in_module(request, subject)
     if request.method == 'POST':
@@ -81,10 +80,9 @@ def edit_lesson(request, subject: Subject, lesson: Lesson):
     form = LessonsForm(instance=lesson)
     return render(request, 'form.html', dict(form=form))
     
-
 @login_required
 def delete_lesson(request, subject: Subject, lesson: Lesson):
-    if request.user.profile.role != TEACHER:
+    if request.user.profile.role != Profile.Role.TEACHER:
         raise PermissionDenied
     user_not_in_module(request, subject)
     lesson.delete()
@@ -92,10 +90,9 @@ def delete_lesson(request, subject: Subject, lesson: Lesson):
     messages.success(request, msg)
     return redirect(subject)
     
-
 @login_required
 def mark_list(request, subject: Subject):
-    if request.user.profile.role != TEACHER:
+    if request.user.profile.role != Profile.Role.TEACHER:
         raise PermissionDenied
     user_not_in_module(request, subject)
     modules = subject.enrollments.all()
@@ -103,7 +100,7 @@ def mark_list(request, subject: Subject):
 
 @login_required
 def edit_marks(request, subject: Subject):
-    if request.user.profile.role != TEACHER:
+    if request.user.profile.role != Profile.Role.TEACHER:
         raise PermissionDenied
     user_not_in_module(request, subject)
     MarkFormSet = modelformset_factory(Enrollment, EditMarkForm, extra=0)
@@ -116,7 +113,7 @@ def edit_marks(request, subject: Subject):
 
 @login_required
 def enroll_subjects(request):
-    if request.user.profile.role == TEACHER:
+    if request.user.profile.role == Profile.Role.TEACHER:
         raise PermissionDenied
     if request.method == 'POST':
         if(form := EnrollSubjectsForm(request.POST, student=request.user)).is_valid():
@@ -129,7 +126,7 @@ def enroll_subjects(request):
 
 @login_required
 def unenroll_subjects(request):
-    if request.user.profile.role == TEACHER:
+    if request.user.profile.role == Profile.Role.TEACHER:
         raise PermissionDenied
     if request.method == 'POST':
         if(form := UnenrollSubjectsForm(request.POST, student=request.user)).is_valid():
@@ -142,7 +139,7 @@ def unenroll_subjects(request):
 
 @login_required
 def request_certificate(request):
-    if request.user.profile.role == TEACHER:
+    if request.user.profile.role == Profile.Role.TEACHER:
         raise PermissionDenied
     if request.user.enrollments.filter(mark__isnull = True).count() > 0:
         raise PermissionDenied

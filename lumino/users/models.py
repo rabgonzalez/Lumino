@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-
+from django.urls import reverse
 
 class Profile(models.Model):
     class Role(models.TextChoices):
@@ -13,3 +13,6 @@ class Profile(models.Model):
         blank=True, upload_to='avatars', default='avatars/noavatar.png'
     )
     bio = models.TextField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse('users:user-detail', args=[self])

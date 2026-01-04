@@ -23,3 +23,9 @@ class UserSignupForm(forms.ModelForm):
         model = get_user_model()
         fields = ('username', 'password', 'first_name', 'last_name', 'email')
         widgets = {'password' : forms.PasswordInput}
+
+    def save(self, *args, **kwargs):
+        user = super().save(commit=False)
+        user.set_password(self.cleaned_data['password'])
+        user = super().save(*args, **kwargs)
+        return user

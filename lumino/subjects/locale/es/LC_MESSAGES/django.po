@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-04 18:48+0000\n"
+"POT-Creation-Date: 2026-01-04 19:33+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -106,19 +106,19 @@ msgstr "Mis módulos"
 msgid "No subjects yet"
 msgstr "Todavía no hay módulos"
 
-#: subjects/views.py:15
+#: subjects/views.py:14
 msgid "You don't have access"
 msgstr "No tienes acceso"
 
-#: subjects/views.py:60
+#: subjects/views.py:59
 msgid "Lesson was successfully added"
 msgstr "La lección fue añadida"
 
-#: subjects/views.py:79
+#: subjects/views.py:78
 msgid "Changes were successfully saved"
 msgstr "Los cambios fueron guardados"
 
-#: subjects/views.py:91
+#: subjects/views.py:89
 #, fuzzy
 #| msgid "Lesson was successfully added"
 msgid "Lesson was successfully deleted"
