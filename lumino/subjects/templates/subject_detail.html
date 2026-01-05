@@ -2,13 +2,14 @@
 {% load i18n %}
 
 {% block content %}
-{% if user.profile.role == 'S' and mark %}
-  <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>
-{% endif %}
 
 <h1>{{subject.code}}</h1>
 <h3>{{subject.name}}</h3>
 <h4>{% translate 'Teacher:' %} {{subject.teacher}}</h4>
+
+{% if user.profile.role == 'S' and mark %}
+  <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>
+{% endif %}
 
 <a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
 

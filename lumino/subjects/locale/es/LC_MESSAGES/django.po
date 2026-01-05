@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 20:10+0000\n"
+"POT-Creation-Date: 2026-01-05 20:58+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -24,7 +24,7 @@ msgid "You will get the grade certificate quite soon at"
 msgstr "Obtendrás tu certificado en"
 
 #: subjects/templates/lesson_detail.html:10 subjects/templates/mark_list.html:6
-#: subjects/templates/subject_detail.html:13
+#: subjects/templates/subject_detail.html:14
 msgid "Go back"
 msgstr "Atrás"
 
@@ -59,7 +59,7 @@ msgid "Cancel modules"
 msgstr "Darse de baja en módulos"
 
 #: subjects/templates/student_subjects.html:15
-#: subjects/templates/subject_detail.html:26
+#: subjects/templates/subject_detail.html:27
 #: subjects/templates/teacher_subjects.html:6
 msgid "Details"
 msgstr "Detalles"
@@ -70,31 +70,31 @@ msgstr "Detalles"
 msgid "No Modules yet"
 msgstr "Todavía no hay módulos"
 
-#: subjects/templates/subject_detail.html:6
-msgid "Your mark for this subject:"
-msgstr "Tu nota en esta asignatura:"
-
-#: subjects/templates/subject_detail.html:11
+#: subjects/templates/subject_detail.html:8
 msgid "Teacher:"
 msgstr "Profesor/a:"
 
-#: subjects/templates/subject_detail.html:16
+#: subjects/templates/subject_detail.html:11
+msgid "Your mark for this subject:"
+msgstr "Tu nota en esta asignatura:"
+
+#: subjects/templates/subject_detail.html:17
 msgid "See all marks"
 msgstr "Ver las notas"
 
-#: subjects/templates/subject_detail.html:17
+#: subjects/templates/subject_detail.html:18
 msgid "New lesson"
 msgstr "Nueva lección"
 
-#: subjects/templates/subject_detail.html:28
+#: subjects/templates/subject_detail.html:29
 msgid "Edit lesson"
 msgstr "Editar lección"
 
-#: subjects/templates/subject_detail.html:29
+#: subjects/templates/subject_detail.html:30
 msgid "Delete lesson"
 msgstr "Eliminar lección"
 
-#: subjects/templates/subject_detail.html:36
+#: subjects/templates/subject_detail.html:37
 msgid "There is no lessons yet"
 msgstr "Todavía no hay lecciones"
 

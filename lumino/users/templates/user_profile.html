@@ -3,6 +3,9 @@
 {% load thumbnail %}
 
 {% block content %}
+
+<a href="javascript:history.back()">{% translate 'Go back' %}</a>
+
 <h3>{{ profile.user.username |capfirst }} {{ profile.user.last_name }}</h3>
 {% thumbnail profile.avatar "200x200" crop="center" format="PNG" as thumb %}
     <img src="{{ thumb.url }}" alt="{{profile.user.username}} {% translate 'profile cover' %}">

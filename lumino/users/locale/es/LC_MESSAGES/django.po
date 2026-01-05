@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 20:10+0000\n"
+"POT-Creation-Date: 2026-01-05 21:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,30 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: users/templates/user_profile.html:8
+#: users/templates/user_profile.html:7
+msgid "Go back"
+msgstr "Volver"
+
+#: users/templates/user_profile.html:11
 msgid "profile cover"
 msgstr "foto de perfil"
 
-#: users/templates/user_profile.html:12
+#: users/templates/user_profile.html:15
 msgid "Student"
 msgstr "Estudiante"
 
-#: users/templates/user_profile.html:14
+#: users/templates/user_profile.html:18
 msgid "Teacher"
 msgstr "Profesor"
 
-#: users/templates/user_profile.html:18
+#: users/templates/user_profile.html:24
 msgid "Edit profile"
 msgstr "Editar perfil"
 
-#: users/templates/user_profile.html:20
+#: users/templates/user_profile.html:26
 msgid "Leave platform"
 msgstr "Abandonar la página"
 
-#: users/views.py:18
+#: users/views.py:21
 msgid "User profile has been successfully saved"
 msgstr "Perfil correctamente actualizado"
 
-#: users/views.py:29
+#: users/views.py:33
 msgid "Good bye! Hope to see you soon"
 msgstr "Hasta la vista! Espero verte pronto"
