@@ -3,12 +3,20 @@
 {% load thumbnail %}
 
 {% block content %}
-<h3>{{ profile.user.username |capfirst }} {{ profile.user.lastname }}</h3>
+<h3>{{ profile.user.username |capfirst }} {{ profile.user.last_name }}</h3>
 {% thumbnail profile.avatar "200x200" crop="center" format="PNG" as thumb %}
     <img src="{{ thumb.url }}" alt="{{profile.user.username}} {% translate 'profile cover' %}">
 {% endthumbnail %}
+
+{% if profile.role == 'S' %}
+<h4>{% translate 'Student'%}</h4>
+
+{% else %}
+<h4>{% translate 'Teacher'%}</h4>
+
 <h5>{{ profile.user.email }}</h5>
-<h4>{{ profile.role.get_category_display }}</h4>
+
+{% endif%}
 <div class="controls">
   <a href="{% url 'users:edit-profile' profile %}">{% translate 'Edit profile' %}</a>
   {% if profile.role == 'S' %}
