@@ -25,7 +25,9 @@ class Lesson(models.Model):
 
     def __str__(self, *args, **kwargs):
         return f'{self.title}'
-
+    
+    def get_absolute_url(self):
+        return reverse('subjects:lesson-detail', args={self.subject, self})
 
 class Enrollment(models.Model):
     student = models.ForeignKey(
