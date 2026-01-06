@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 21:00+0000\n"
+"POT-Creation-Date: 2026-01-06 12:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,18 +35,22 @@ msgstr "Estudiante"
 msgid "Teacher"
 msgstr "Profesor"
 
-#: users/templates/user_profile.html:24
+#: users/templates/user_profile.html:22
 msgid "Edit profile"
 msgstr "Editar perfil"
 
-#: users/templates/user_profile.html:26
+#: users/templates/user_profile.html:24
 msgid "Leave platform"
 msgstr "Abandonar la página"
 
-#: users/views.py:21
-msgid "User profile has been successfully saved"
+#: users/views.py:22
+#, fuzzy
+#| msgid "User profile has been successfully saved"
+msgid "User profile has been successfully saved."
 msgstr "Perfil correctamente actualizado"
 
-#: users/views.py:33
-msgid "Good bye! Hope to see you soon"
+#: users/views.py:34
+#, fuzzy
+#| msgid "Good bye! Hope to see you soon"
+msgid "Good bye! Hope to see you soon."
 msgstr "Hasta la vista! Espero verte pronto"

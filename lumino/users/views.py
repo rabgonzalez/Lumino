@@ -14,22 +14,23 @@ def user_detail(request, user: Profile):
 
 
 @login_required
-def edit_profile(request, user: Profile):
+def edit_profile(request,):
+    profile = request.user.profile
     if request.method == 'POST':
-        if (form := ProfileForm(request.POST, request.FILES, instance=user)).is_valid():
+        if (form := ProfileForm(request.POST, request.FILES, instance=profile)).is_valid():
             form.save()
-            msg = _('User profile has been successfully saved')
+            msg = _('User profile has been successfully saved.')
             messages.success(request, msg)
-            return redirect(user)
-    form = ProfileForm(instance=user)
+            return redirect(profile)
+    form = ProfileForm(instance=profile)
     return render(request, 'form.html', dict(form=form))
 
 
 @login_required
-def leave(request, user: Profile):
+def leave(request):
     if request.user.profile.role == Profile.Role.TEACHER:
         raise PermissionDenied
-    user.user.delete()
-    msg = _('Good bye! Hope to see you soon')
+    request.user.delete()
+    msg = _('Good bye! Hope to see you soon.')
     messages.success(request, msg)
     return redirect('index')

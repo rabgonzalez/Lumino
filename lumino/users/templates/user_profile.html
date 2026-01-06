@@ -16,14 +16,12 @@
 
 {% else %}
 <h4>{% translate 'Teacher'%}</h4>
-
-<h5>{{ profile.user.email }}</h5>
-
 {% endif%}
+<h5>{{ profile.user.email }}</h5>
 <div class="controls">
-  <a href="{% url 'users:edit-profile' profile %}">{% translate 'Edit profile' %}</a>
+  <a href="{% url 'edit-profile' %}">{% translate 'Edit profile' %}</a>
   {% if profile.role == 'S' %}
-    <a href="{% url 'users:leave' profile %}">{% translate 'Leave platform' %}</a>
+    <a href="{% url 'leave' %}">{% translate 'Leave platform' %}</a>
   {% endif %}
 </div>
 <p>{{ profile.bio }}</p>
