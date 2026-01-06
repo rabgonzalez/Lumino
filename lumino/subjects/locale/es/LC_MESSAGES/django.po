@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-06 11:26+0000\n"
+"POT-Creation-Date: 2026-01-06 12:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -109,16 +109,34 @@ msgstr "Mis módulos"
 msgid "You don't have access"
 msgstr "No tienes acceso"
 
-#: subjects/views.py:71
-msgid "Lesson was successfully added"
-msgstr "La lección fue añadida"
-
-#: subjects/views.py:92
-msgid "Changes were successfully saved"
-msgstr "Los cambios fueron guardados"
-
-#: subjects/views.py:104
+#: subjects/views.py:66
 #, fuzzy
 #| msgid "Lesson was successfully added"
-msgid "Lesson was successfully deleted"
+msgid "Lesson was successfully added."
+msgstr "La lección fue añadida"
+
+#: subjects/views.py:87
+#, fuzzy
+#| msgid "Changes were successfully saved"
+msgid "Changes were successfully saved."
+msgstr "Los cambios fueron guardados"
+
+#: subjects/views.py:99
+#, fuzzy
+#| msgid "Lesson was successfully added"
+msgid "Lesson was successfully deleted."
 msgstr "La lección fue eliminada"
+
+#: subjects/views.py:123
+#, fuzzy
+#| msgid "Changes were successfully saved"
+msgid "Marks were successfully saved."
+msgstr "Los cambios fueron guardados"
+
+#: subjects/views.py:137
+msgid "Successfully enrolled in the chosen subjects."
+msgstr "Asignaturas añadidas correctamente"
+
+#: subjects/views.py:153
+msgid "Successfully unenrolled from the chosen subjects."
+msgstr "Asignaturas canceladas correctamente"

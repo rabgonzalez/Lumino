@@ -18,16 +18,11 @@ FORBIDDEN_MESSAGE = _("You don't have access")
 
 def user_not_in_module(request, subject: Subject):
     if request.user.profile.role == Profile.Role.STUDENT:
-        print(request.user.enrollments.filter(subject=subject))
         if not request.user.enrollments.filter(subject=subject) == '<QuerySet []>':
             return HttpResponseForbidden(FORBIDDEN_MESSAGE)
 
     elif request.user.profile.role == Profile.Role.TEACHER:
-        print(subject.teacher)
-        print(request.user)
-        print(subject.teacher != request.user)
         if subject.teacher != request.user:
-            print('ta mal')
             return HttpResponseForbidden(FORBIDDEN_MESSAGE)
 
 
@@ -68,7 +63,7 @@ def add_lesson(request, subject: Subject):
             lesson = form.save(commit=False)
             lesson.subject = subject
             lesson.save()
-            msg = _('Lesson was successfully added')
+            msg = _('Lesson was successfully added.')
             messages.success(request, msg)
             return redirect('subjects:subject-list')
     form = LessonsForm()
@@ -89,7 +84,7 @@ def edit_lesson(request, subject: Subject, lesson: Lesson):
     if request.method == 'POST':
         if (form := LessonsForm(request.POST, instance=lesson)).is_valid():
             form.save()
-            msg = _('Changes were successfully saved')
+            msg = _('Changes were successfully saved.')
             messages.success(request, msg)
     form = LessonsForm(instance=lesson)
     return render(request, 'form.html', dict(form=form))
@@ -101,7 +96,7 @@ def delete_lesson(request, subject: Subject, lesson: Lesson):
         raise PermissionDenied
     user_not_in_module(request, subject)
     lesson.delete()
-    msg = _('Lesson was successfully deleted')
+    msg = _('Lesson was successfully deleted.')
     messages.success(request, msg)
     return redirect(subject)
 
@@ -125,6 +120,8 @@ def edit_marks(request, subject: Subject):
     if request.method == 'POST':
         if (formset := MarkFormSet(queryset=queryset, data=request.POST)).is_valid():
             formset.save()
+            msg = _('Marks were successfully saved.')
+            messages.success(request, msg)
     formset = MarkFormSet(queryset=queryset)
     return render(request, 'form.html', dict(form=formset, subject=subject))
 
@@ -137,6 +134,8 @@ def enroll_subjects(request):
         if (form := EnrollSubjectsForm(request.POST, student=request.user)).is_valid():
             subjects_to_enroll = form.cleaned_data['subjects']
             request.user.enrolled.add(*subjects_to_enroll)
+            msg = _('Successfully enrolled in the chosen subjects.')
+            messages.success(request, msg)
             return redirect(FALLBACK_REDIRECT)
     else:
         form = EnrollSubjectsForm(student=request.user)
@@ -151,6 +150,8 @@ def unenroll_subjects(request):
         if (form := UnenrollSubjectsForm(request.POST, student=request.user)).is_valid():
             subjects_to_remove = form.cleaned_data['subjects']
             request.user.enrolled.remove(*subjects_to_remove)
+            msg = _('Successfully unenrolled from the chosen subjects.')
+            messages.success(request, msg)
             return redirect(FALLBACK_REDIRECT)
     else:
         form = UnenrollSubjectsForm(student=request.user)

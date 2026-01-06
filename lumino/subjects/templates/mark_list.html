@@ -6,7 +6,7 @@
   <a href={{ subject.get_absolute_url }}>{% translate 'Go back' %}</a>
   <a href="{% url 'subjects:edit-marks' subject %}">{% translate 'Edit marks' %}</a>
     {% for module in modules %}
-      <p>{{module.student.last_name}}, {{module.student.username|capfirst}}: {{module.mark}}</p>
+      <p><a href="{{ module.student.profile.get_absolute_url }}">{{module.student.first_name}} {{module.student.last_name}}</a>: {{module.mark}}</p>
     {% empty %}
       <p>{% translate "This subject is empty" %}</p>
     {% endfor %}

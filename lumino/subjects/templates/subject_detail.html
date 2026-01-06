@@ -24,7 +24,7 @@
   <div class="lesson">
     <h5>{{lesson.title}}</h5>
     <div class="controls">
-    <a href="{{ lesson.get_absolute_url }}">{% translate 'Details' %}</a>
+    <a href="{% url 'subjects:lesson-detail' subject lesson %}">{% translate 'Details' %}</a>
     {% if user.profile.role == 'T' %}
       <a href="{% url 'subjects:edit-lesson' subject lesson %}">{% translate 'Edit lesson' %}</a>
       <a href="{% url 'subjects:delete-lesson' subject lesson %}">{% translate 'Delete lesson' %}</a>
