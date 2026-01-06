@@ -1,0 +1,24 @@
+version = "0.1.0"
+slug = "lumino-docs"
+bundle = [
+    "/docs/README.pdf",
+    "/zensical.toml",
+    "/.gitignore",
+    "/pyproject.toml",
+    "/uv.lock",
+    "/justfile",
+]
+backup_on_update = ["/.gitignore", "/pyproject.toml", "/uv.lock", "/justfile"]
+exclude_from_zip = [
+    "*.pyc",
+    ".DS_Store",
+    "/.git",
+    "*.bak",
+    ".venv",
+    ".env",
+    "/site",
+    "/.cache",
+    ".mypy_cache",
+    ".pytest_cache",
+]
+test_cmd = "uv run pytest -s"
