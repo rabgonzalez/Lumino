@@ -33,6 +33,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 MEDIA_URL = 'media/'
 
+LOGIN_URL = 'login/'
 
 # Application definition
 

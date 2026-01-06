@@ -13,7 +13,7 @@ FALLBACK_REDIRECT = 'index'
 
 def user_login(request):
     if request.user.is_authenticated:
-        return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
+        return redirect(reverse(FALLBACK_REDIRECT))
     
     if request.method == 'POST':
         if (form := AuthenticationForm(data=request.POST)).is_valid():
@@ -21,7 +21,7 @@ def user_login(request):
             password = form.cleaned_data['password']
             if user := authenticate(request, username=username, password=password):
                 login(request, user)
-            return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
+            return redirect(request.GET.get('next', FALLBACK_REDIRECT))
         else:
             msg = _('Incorrect username or password.')
             form.add_error(None, msg)
@@ -32,11 +32,11 @@ def user_login(request):
 @login_required
 def user_logout(request):
     logout(request)
-    return redirect(reverse(FALLBACK_REDIRECT))
+    return redirect(FALLBACK_REDIRECT)
 
 def user_signup(request):
     if request.user.is_authenticated:
-        return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
+        return redirect(reverse(FALLBACK_REDIRECT))
     
     if request.method == 'POST':
         if (form := UserSignupForm(request.POST)).is_valid():
@@ -44,7 +44,7 @@ def user_signup(request):
             login(request, user)
             msg = _('Welcome to Lumino. Nice to see you!')
             messages.success(request, msg)
-            return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
+            return redirect(request.GET.get('next', FALLBACK_REDIRECT))
     else:
         form = UserSignupForm()
     return render(request, 'auth_form.html', {'form': form, 'type':'signup'})
