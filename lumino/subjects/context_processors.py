@@ -1,11 +1,10 @@
-STUDENT = 'S'
-TEACHER = 'T'
+from users.models import Profile 
 
 def subjects(request) -> dict:
     try:
-        if request.user.profile.role == STUDENT:
-            return dict(modules=request.user.enrollments.all())
-        elif request.user.profile.role == TEACHER:
+        if request.user.profile.role == Profile.Role.STUDENT:
+            return dict(subjects=request.user.enrolled.all())
+        elif request.user.profile.role ==  Profile.Role.TEACHER:
             return dict(subjects=request.user.teaching.all())
     except AttributeError:
         pass

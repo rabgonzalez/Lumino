@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 20:58+0000\n"
+"POT-Creation-Date: 2026-01-06 11:26+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -51,12 +51,16 @@ msgid "Get your certificate of qualifications!"
 msgstr "Obten tu certificado de calificaciones!"
 
 #: subjects/templates/student_subjects.html:7
-msgid "Enroll in modules"
+#, fuzzy
+#| msgid "Enroll in modules"
+msgid "Enroll in subjects"
 msgstr "Matricularse en módulos"
 
 #: subjects/templates/student_subjects.html:9
-msgid "Cancel modules"
-msgstr "Darse de baja en módulos"
+#, fuzzy
+#| msgid "My subjects"
+msgid "Cancel subjects"
+msgstr "Mis módulos"
 
 #: subjects/templates/student_subjects.html:15
 #: subjects/templates/subject_detail.html:27
@@ -65,9 +69,8 @@ msgid "Details"
 msgstr "Detalles"
 
 #: subjects/templates/student_subjects.html:18
-#, fuzzy
-#| msgid "No subjects yet"
-msgid "No Modules yet"
+#: subjects/templates/teacher_subjects.html:9
+msgid "No subjects yet"
 msgstr "Todavía no hay módulos"
 
 #: subjects/templates/subject_detail.html:8
@@ -102,10 +105,6 @@ msgstr "Todavía no hay lecciones"
 msgid "My subjects"
 msgstr "Mis módulos"
 
-#: subjects/templates/teacher_subjects.html:9
-msgid "No subjects yet"
-msgstr "Todavía no hay módulos"
-
 #: subjects/views.py:16
 msgid "You don't have access"
 msgstr "No tienes acceso"
@@ -123,10 +122,3 @@ msgstr "Los cambios fueron guardados"
 #| msgid "Lesson was successfully added"
 msgid "Lesson was successfully deleted"
 msgstr "La lección fue eliminada"
-
-#, python-brace-format
-#~ msgid "{name} grades certificate"
-#~ msgstr "certificado de notas de {name}"
-
-#~ msgid "This is a body"
-#~ msgstr "Esto es un cuerpo de mensaje"

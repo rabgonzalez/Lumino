@@ -4,17 +4,17 @@
     <a href="{% url 'subjects:request-certificate' %}">{% translate 'Get your certificate of qualifications!' %}</a>
   </div>
 {% endif %}
-<a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in modules' %}</a>
-{% if modules %}
-  <a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel modules' %}</a>
+<a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in subjects' %}</a>
+{% if subjects %}
+  <a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel subjects' %}</a>
 {% endif %}
-<div class="modules">
-  {% for module in modules %}
-  <div class="module">
-    <p>{{module.subject}}</p>
-    <a href="{{ module.subject.get_absolute_url }}">{% translate 'Details' %}</a>
+<div class="subjects">
+  {% for subject in subjects %}
+  <div class="subject">
+    <p>{{ subject }}</p>
+    <a href="{{ subject.get_absolute_url }}">{% translate 'Details' %}</a>
   </div>
   {% empty %}
-  <p>{% translate 'No Modules yet' %}</p>
+  <p>{% translate 'No subjects yet' %}</p>
   {% endfor %}
 </div>
