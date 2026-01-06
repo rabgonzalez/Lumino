@@ -6,17 +6,17 @@
   {% if type == 'login' %}
   <h1>{% translate 'Login' %}</h1>
   {% else %}
-  <h1>{% translate 'Signup' %}</h1>
+  <h1>{% translate 'Sign up' %}</h1>
   {% endif %}
   <form method="post" novalidate>
     {% csrf_token %} 
     {{ form }} 
     {% if type == 'login' %} 
-    <input type="submit" value={% translate 'login' %}>
-    <a href="{% url 'accounts:signup' %}">{% translate 'signup' %}</a> 
+    <input type="submit" value={% translate 'Login' %}>
+    <a href="{% url 'accounts:signup' %}">{% translate 'Sign up' %}</a> 
     {% else %} 
-    <input type="submit" value={% translate 'signup' %}> 
-    <a href="{% url 'accounts:login' %}">{% translate 'login' %}</a> 
+    <input type="submit" value={% translate 'Sign up' %}> 
+    <a href="{% url 'accounts:login' %}">{% translate 'Login' %}</a> 
     {% endif %}
   </form>
 </div>

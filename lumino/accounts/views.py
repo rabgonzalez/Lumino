@@ -22,6 +22,9 @@ def user_login(request):
             if user := authenticate(request, username=username, password=password):
                 login(request, user)
             return redirect(request.GET.get('next', reverse(FALLBACK_REDIRECT)))
+        else:
+            msg = _('Incorrect username or password.')
+            form.add_error(None, msg)
     else:
         form = AuthenticationForm()
     return render(request, 'auth_form.html', {'form': form, 'type':'login'})
