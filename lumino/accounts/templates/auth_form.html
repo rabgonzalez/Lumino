@@ -13,10 +13,10 @@
     {{ form }} 
     {% if type == 'login' %} 
     <input type="submit" value={% translate 'Login' %}>
-    <a href="{% url 'accounts:signup' %}">{% translate 'Sign up' %}</a> 
+    <a href="{% url 'signup' %}">{% translate 'Sign up' %}</a> 
     {% else %} 
     <input type="submit" value={% translate 'Sign up' %}> 
-    <a href="{% url 'accounts:login' %}">{% translate 'Login' %}</a> 
+    <a href="{% url 'login' %}">{% translate 'Login' %}</a> 
     {% endif %}
   </form>
 </div>
