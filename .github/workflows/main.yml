@@ -21,10 +21,12 @@ jobs:
         with:
           python-version: 3.13
       - run: pip install zensical
-        working-directory: lumino-docs
-      - run: zensical build --clean 
+      - name: Build docs
+        run: |
+          cd lumino-docs
+          zensical build --clean
       - uses: actions/upload-pages-artifact@v4
         with:
-          path: site
+          path: lumino-docs/site
       - uses: actions/deploy-pages@v4
         id: deployment
