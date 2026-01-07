@@ -29,6 +29,47 @@ c --> |1:1| L[Lesson];
 ## Diagramas
 
 ### Diagrama de Clases
+```mermaid
+classDiagram
+    class Subject {
+        + code: string
+        + name: string
+        + teacher: int FK
+        + students: int[ ] m2m
+    }
+
+    class Lesson {
+        + subject: Subject FK
+        + title: string
+        + content: int 
+    }
+
+    class Enrollment {
+        + student: User FK
+        + subject: Subject FK
+        + enrolled_at : Date
+        + mark : int
+    }
+     
+
+    class Profile {
+        + user: User o2o
+        + role: Role
+        + avatar = Image
+        + bio = string
+    }
+
+    class Role {
+        << enumeration >>
+        + TEACHER: string
+        + STUDENT: string
+    }
+
+    Profile "1" --* "1" Role
+    Profile "0" --o "N" Enrollment
+    Subject "0" --o "N" Enrollment 
+    Subject "0" --o "N" Lesson 
+```
 
 ### Diagrama de Secuencia
 
