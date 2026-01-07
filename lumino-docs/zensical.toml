@@ -57,6 +57,10 @@ Copyright &copy; 2026 Rubén Abreu González y Samuel Pérez Carballo
   {"Lumino" = "https://github.com/rabgonzalez/Lumino"}
  ]
 
+  # Github repository on the navbar
+ repo_url = "https://github.com/rabgonzalez/Lumino"
+ repo_name = "Lumino"
+
 # With the "extra_css" option you can add your own CSS styling to customize
 # your Zensical project according to your needs. You can add any number of
 # CSS files.
@@ -81,11 +85,14 @@ Copyright &copy; 2026 Rubén Abreu González y Samuel Pérez Carballo
 [project.theme]
 
 features = [
+  "navigation.footer",
   "navigation.instant",
   "navigation.instant.prefetch",
   "navigation.instant.progress",
   "toc.integrate",
   "navigation.top",
+  "search.highlight",
+  "content.tooltips",
 ]
 
 # change this to "classic" to use the traditional Material for MkDocs look.
@@ -340,4 +347,8 @@ icon = "fontawesome/brands/github"
 link = "https://github.com/rabgonzalez/Lumino"
 
 [project.markdown_extensions.toc]
-permalink =  true
+permalink = "⚓︎"
+
+[project.markdown_extensions.abbr]
+[project.markdown_extensions.attr_list]
+[project.markdown_extensions.pymdownx.snippets]
