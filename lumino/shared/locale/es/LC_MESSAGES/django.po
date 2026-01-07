@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-05 20:58+0000\n"
+"POT-Creation-Date: 2026-01-07 20:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,34 +19,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
 "1 : 2;\n"
 
-#: shared/templates/form.html:8
+#: shared/templates/form.html:11
 msgid "Save"
 msgstr "Guardar"
 
-#: shared/templates/form.html:9
+#: shared/templates/form.html:12
 msgid "Go back"
 msgstr "Volver"
 
-#: shared/templates/header.html:11
-msgid "Subjects"
-msgstr "Asignaturas"
-
-#: shared/templates/header.html:12
+#: shared/templates/header.html:21
 msgid "Profile"
 msgstr "Perfil"
 
-#: shared/templates/header.html:13
+#: shared/templates/header.html:22
+msgid "Subjects"
+msgstr "Asignaturas"
+
+#: shared/templates/header.html:23
 msgid "logout"
 msgstr "cerrar sesión"
 
-#: shared/templates/index.html:5
+#: shared/templates/index.html:7
 msgid "Join Lumino. The cool education platform!"
 msgstr "Únete a Lumnio. La mejor plataforma de educación"
 
-#: shared/templates/index.html:7
+#: shared/templates/index.html:9
 msgid "login"
 msgstr "iniciar sesión"
 
-#: shared/templates/index.html:8
+#: shared/templates/index.html:10
 msgid "signup"
 msgstr "registrarse"

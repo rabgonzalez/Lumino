@@ -2,7 +2,11 @@
 {% load i18n %}
 
 {% block content %}
-  <h2>{% translate 'My subjects' %}</h2>
+  <div class="container">
+    <div class="row">
+      <h2 class="col text-center mt-5">{% translate 'My subjects' %}</h2>
+    </div>
+  </div>
   {% if user.profile.role == 'S' %}
     {% include 'student_subjects.html' %}
   {% elif user.profile.role == 'T' %}

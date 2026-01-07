@@ -1,23 +1,31 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
-<div class="auth">
+<link rel="stylesheet" href="{% static 'auth_form.css' %}">
+
+<div class="auth auth-card">
   {% if type == 'login' %}
-  <h1>{% translate 'Login' %}</h1>
+  <h1 class="h3 text-center mb-4">{% translate 'Login' %}</h1>
   {% else %}
-  <h1>{% translate 'Sign up' %}</h1>
+  <h1 class="h3 text-center mb-4">{% translate 'Sign up' %}</h1>
   {% endif %}
   <form method="post" novalidate>
     {% csrf_token %} 
-    {{ form }} 
-    {% if type == 'login' %} 
-    <input type="submit" value={% translate 'Login' %}>
-    <a href="{% url 'signup' %}">{% translate 'Sign up' %}</a> 
-    {% else %} 
-    <input type="submit" value={% translate 'Sign up' %}> 
-    <a href="{% url 'login' %}">{% translate 'Login' %}</a> 
-    {% endif %}
+    {{ form }}
+
+    <div class="auth-buttons">
+      {% if type == 'login' %} 
+      <input type="submit" value={% translate 'Login' %}>
+      <a class="footer-link" href="{% url 'signup' %}">{% translate 'Sign up' %}</a>
+
+      {% else %} 
+      <input type="submit" value={% translate 'Sign up' %}> 
+      <a class="footer-link" href="{% url 'login' %}">{% translate 'Login' %}</a>
+      
+      {% endif %}
+    </div>
   </form>
 </div>
 {%endblock%}

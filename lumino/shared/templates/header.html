@@ -6,20 +6,21 @@
 
 <div class="container title-lang">
   <div class="row">
-    <a href="{% url 'index'%}" class="logo-link col align-content-center">
+    <a href="{% url 'index'%}" class="logo-link col-md align-content-center">
       <h1 class="display-4"><i class="bi bi-mortarboard-fill me-2">Lumino</i></h1>
     </a>
-    <div class="lang col align-content-end text-end">
+    <div class="lang col-md align-content-end text-end">
       {% setlang %}
     </div>
   </div>
 </div>
 
 {% if user.is_authenticated %}
-<div class="auth">
-    <p>{{user}}</p>
-    <a href="{% url 'subjects:subject-list' %}">{% translate 'Subjects' %}</a>
-    <a href="{% url 'users:user-detail' request.user.profile %}">{% translate 'Profile' %}</a>
-    <a href="{% url 'logout' %}">{% translate 'logout' %}</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md my-3 text-center"><a href="{% url 'users:user-detail' request.user.profile %}" title="{% translate 'Profile' %}">{{user}}</a></div>
+    <div class="col-md my-3 text-center"><a href="{% url 'subjects:subject-list' %}">{% translate 'Subjects' %}</a></div>
+    <div class="col-md my-3 text-center"><a href="{% url 'logout' %}">{% translate 'logout' %}</a></div>
+  </div>
 </div>
 {% endif %}
