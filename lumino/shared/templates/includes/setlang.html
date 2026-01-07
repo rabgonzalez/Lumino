@@ -1,12 +1,17 @@
 {% load i18n %}
+{% load static %}
 
-<form action="{% url 'set_language' %}" method="post">
-  {% csrf_token %}
-  <select name="language" onchange="this.form.submit()">
-    {% for language in languages %}
-      <option value="{{ language }}" {% if current_language == language %}selected{% endif %}>
-        {{ language|upper }}
-      </option>
-    {% endfor %}
-  </select>
-</form>
+<link rel="stylesheet" href="{% static 'css/setlang.css' %}">
+
+<div class="lang">
+  <form action="{% url 'set_language' %}" method="post" class="d-inline-block">
+    {% csrf_token %}
+    <select name="language" onchange="this.form.submit()" class="form-select form-select-sm">
+      {% for language in languages %}
+        <option value="{{ language }}" {% if current_language == language %}selected{% endif %}>
+          {{ language|upper }}
+        </option>
+      {% endfor %}
+    </select>
+  </form>
+</div>

@@ -1,0 +1,17 @@
+.lang {
+  margin-bottom: 30px;
+  align-content: right;
+}
+
+.lang select {
+  padding: 5px 10px;
+  border-radius: 5px;
+  padding-right: 2rem;
+  background-position: right 0.5rem center;
+  border: 1px solid #dadce0;
+  color: #5f6368;
+}
+
+.lang form {
+  justify-items: right;
+}

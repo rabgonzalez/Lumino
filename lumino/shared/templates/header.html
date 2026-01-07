@@ -1,10 +1,20 @@
 {% load shared_extras %}
 {% load i18n %}
+{% load static %}
 
-<a href="{% url 'index'%}"><h1>Lumino</h1></a>
-<div class="lang">
-  {% setlang %}
+<link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+<div class="container title-lang">
+  <div class="row">
+    <a href="{% url 'index'%}" class="logo-link col align-content-center">
+      <h1 class="display-4"><i class="bi bi-mortarboard-fill me-2">Lumino</i></h1>
+    </a>
+    <div class="lang col align-content-end text-end">
+      {% setlang %}
+    </div>
+  </div>
 </div>
+
 {% if user.is_authenticated %}
 <div class="auth">
     <p>{{user}}</p>

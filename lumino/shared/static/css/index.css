@@ -1,0 +1,48 @@
+h1 {
+  color: #1a73e8;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.container > h1:nth-of-type(2) {
+  color: #3c4043;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+.auth {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.auth a {
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.auth a:first-child {
+  background-color: #ffffff;
+  color: #1a73e8;
+  border: 2px solid #1a73e8;
+}
+
+.auth a:first-child:hover {
+  background-color: #f1f3f4;
+}
+
+.auth a:last-child {
+  background-color: #1a73e8;
+  color: #ffffff;
+  border: 2px solid #1a73e8;
+}
+
+.auth a:last-child:hover {
+  background-color: #1557b0;
+  border-color: #1557b0;
+}

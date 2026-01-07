@@ -1,10 +1,12 @@
 {% extends 'base.html'%}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
-  <h1>{% translate 'Join Lumino. The cool education platform!'%}</h1>
-  <div class="auth">
+  <link rel="stylesheet" href="{% static 'css/index.css' %}">
+  <h1 class="h2 mb-4 text-center">{% translate 'Join Lumino. The cool education platform!'%}</h1>
+  <div class="auth mt-5">
     <a href="{% url 'login' %}">{% translate 'login' %}</a>
     <a href="{% url 'signup' %}">{% translate 'signup' %}</a>
   </div>
-  {% endblock %}
+{% endblock %}
