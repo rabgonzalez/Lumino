@@ -15,6 +15,14 @@ from tests import conftest
 # SUBJECT LIST
 # ==============================================================================
 
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_subject_list_page_handles_login_required(client):
+    response = client.get(conftest.SUBJECT_LIST_URL, follow=True)
+    assertRedirects(response, conftest.get_next_url(conftest.SUBJECT_LIST_URL))
+
+
 # ------------
 # TEACHER ROLE
 # ------------
@@ -134,6 +142,15 @@ def test_subject_list_page_does_not_contain_request_grade_certificate_link_when_
 # ==============================================================================
 # SUBJECT DETAIL
 # ==============================================================================
+
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_subject_detail_page_handles_login_required(client, subject):
+    url = conftest.SUBJECT_DETAIL_URL.format(subject_code=subject.code)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
 
 # ------------
 # TEACHER ROLE
@@ -312,6 +329,15 @@ def test_subject_detail_is_forbidden_for_non_enrolled_students(client, student, 
 # ADD LESSON
 # ==============================================================================
 
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_add_lesson_page_handles_login_required(client, subject):
+    url = conftest.LESSON_ADD_URL.format(subject_code=subject.code)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
 # ------------
 # TEACHER ROLE
 # ------------
@@ -365,6 +391,15 @@ def test_add_lesson_is_forbidden_for_students(client, student, subject):
 # ==============================================================================
 # LESSON DETAIL
 # ==============================================================================
+
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_lesson_detail_page_handles_login_required(client, subject, lesson):
+    url = conftest.LESSON_DETAIL_URL.format(subject_code=subject.code, lesson_pk=lesson.pk)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
 
 # ------------
 # TEACHER ROLE
@@ -455,6 +490,15 @@ def test_lesson_detail_is_forbidden_for_non_enrolled_students(client, student, s
 # EDIT LESSON
 # ==============================================================================
 
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_edit_lesson_page_handles_login_required(client, subject, lesson):
+    url = conftest.LESSON_EDIT_URL.format(subject_code=subject.code, lesson_pk=lesson.pk)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
 # ------------
 # TEACHER ROLE
 # ------------
@@ -523,6 +567,15 @@ def test_edit_lesson_is_forbidden_for_student_role(client, student, subject):
 # DELETE LESSON
 # ==============================================================================
 
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_delete_lesson_page_handles_login_required(client, subject, lesson):
+    url = conftest.LESSON_DELETE_URL.format(subject_code=subject.code, lesson_pk=lesson.pk)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
 # ------------
 # TEACHER ROLE
 # ------------
@@ -570,6 +623,15 @@ def test_delete_lesson_is_forbidden_for_student_role(client, student, subject):
 # ==============================================================================
 # MARK LIST
 # ==============================================================================
+
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_mark_list_page_handles_login_required(client, subject):
+    url = conftest.MARKS_LIST_URL.format(subject_code=subject.code)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
 
 # ------------
 # TEACHER ROLE
@@ -620,6 +682,14 @@ def test_mark_list_is_forbidden_for_students(client, student, subject):
 # ==============================================================================
 # EDIT MARKS
 # ==============================================================================
+
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_edit_marks_page_handles_login_required(client, subject):
+    url = conftest.MARKS_EDIT_URL.format(subject_code=subject.code)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
 
 
 @pytest.mark.django_db
@@ -682,6 +752,15 @@ def test_edit_marks_is_forbidden_for_student_role(client, student, subject):
 # ENROLL SUBJECTS
 # ==============================================================================
 
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_enroll_subjects_page_handles_login_required(client):
+    url = conftest.SUBJECT_ENROLL_URL
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
 # ------------
 # TEACHER ROLE
 # ------------
@@ -734,6 +813,15 @@ def test_enroll_subjects_works_properly_for_student_role(client, student):
 # ==============================================================================
 # UNENROLL SUBJECTS
 # ==============================================================================
+
+
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_unenroll_subjects_page_handles_login_required(client):
+    url = conftest.SUBJECT_UNENROLL_URL
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
 
 # ------------
 # TEACHER ROLE

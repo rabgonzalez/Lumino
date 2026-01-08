@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import PermissionDenied
 from django.forms import modelformset_factory
-from django.http import HttpResponseForbidden
 from django.shortcuts import redirect, render
 from django.utils.translation import gettext as _
 
@@ -18,12 +17,12 @@ FORBIDDEN_MESSAGE = _("You don't have access")
 
 def user_not_in_module(request, subject: Subject):
     if request.user.profile.role == Profile.Role.STUDENT:
-        if not request.user.enrollments.filter(subject=subject) == '<QuerySet []>':
-            return HttpResponseForbidden(FORBIDDEN_MESSAGE)
+        if request.user.enrollments.filter(subject=subject).count() == 0:
+            raise PermissionDenied
 
     elif request.user.profile.role == Profile.Role.TEACHER:
         if subject.teacher != request.user:
-            return HttpResponseForbidden(FORBIDDEN_MESSAGE)
+            raise PermissionDenied
 
 
 @login_required
@@ -58,6 +57,7 @@ def subject_detail(request, subject: Subject):
 def add_lesson(request, subject: Subject):
     if request.user.profile.role != Profile.Role.TEACHER:
         raise PermissionDenied
+    user_not_in_module(request, subject)
     if request.method == 'POST':
         if (form := LessonsForm(request.POST)).is_valid():
             lesson = form.save(commit=False)
@@ -65,7 +65,7 @@ def add_lesson(request, subject: Subject):
             lesson.save()
             msg = _('Lesson was successfully added.')
             messages.success(request, msg)
-            return redirect('subjects:subject-list')
+            return redirect(subject)
     form = LessonsForm()
     return render(request, 'form.html', dict(form=form))
 

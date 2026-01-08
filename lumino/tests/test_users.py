@@ -13,6 +13,14 @@ from users.models import Profile
 # ==============================================================================
 
 
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_user_detail_page_handles_login_required(client, user):
+    url = conftest.USER_DETAIL_URL.format(username=user.username)
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
 @pytest.mark.django_db
 def test_user_detail_displays_all_elements(client, student, teacher):
     client.force_login(student)
@@ -67,6 +75,14 @@ def test_user_detail_non_existent_user_returns_404(client, user):
 # ==============================================================================
 
 
+@pytest.mark.dependency()
+@pytest.mark.django_db
+def test_edit_profile_page_handles_login_required(client):
+    url = conftest.USER_EDIT_URL
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
 @pytest.mark.django_db
 def test_edit_profile_contains_right_user_info(client, user):
     client.force_login(user)
@@ -100,8 +116,16 @@ def test_edit_profile_works_properly(client, user, image):
 # ==============================================================================
 
 
+@pytest.mark.dependency()
 @pytest.mark.django_db
-def test_leave_works(client, student, django_user_model):
+def test_user_leaves_platform_page_handles_login_required(client):
+    url = conftest.USER_LEAVE_URL
+    response = client.get(url, follow=True)
+    assertRedirects(response, conftest.get_next_url(url))
+
+
+@pytest.mark.django_db
+def test_user_leaves_platform_works(client, student, django_user_model):
     student_pk = student.pk
     client.force_login(student)
     response = client.get(conftest.USER_LEAVE_URL, follow=True)
@@ -113,7 +137,7 @@ def test_leave_works(client, student, django_user_model):
 
 
 @pytest.mark.django_db
-def test_leave_is_forbidden_for_teachers(client, teacher):
+def test_user_leaves_platform_is_forbidden_for_teachers(client, teacher):
     client.force_login(teacher)
     response = client.get(conftest.USER_LEAVE_URL)
     assert response.status_code == HTTPStatus.FORBIDDEN

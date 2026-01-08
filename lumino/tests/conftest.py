@@ -4,7 +4,7 @@ import pytest
 from django.core.files.uploadedfile import SimpleUploadedFile
 from PIL import Image
 
-from factories import StudentFactory, SubjectFactory, TeacherFactory, UserFactory
+from factories import LessonFactory, StudentFactory, SubjectFactory, TeacherFactory, UserFactory
 
 # ==============================================================================
 # URL Patterns
@@ -21,17 +21,28 @@ SIGNUP_URL = f'/{TESTLANG}/signup/'
 USER_DETAIL_URL = f'/{TESTLANG}/users/{{username}}/'
 USER_EDIT_URL = f'/{TESTLANG}/user/edit/'
 USER_LEAVE_URL = f'/{TESTLANG}/user/leave/'
+
 SUBJECT_LIST_URL = f'/{TESTLANG}/subjects/'
 SUBJECT_DETAIL_URL = f'/{TESTLANG}/subjects/{{subject_code}}/'
 SUBJECT_ENROLL_URL = f'/{TESTLANG}/subjects/enroll/'
 SUBJECT_UNENROLL_URL = f'/{TESTLANG}/subjects/unenroll/'
 SUBJECT_GRADE_CERTIFICATE_URL = f'/{TESTLANG}/subjects/certificate/'
+
 LESSON_DETAIL_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/{{lesson_pk}}/'
 LESSON_ADD_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/add/'
 LESSON_EDIT_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/{{lesson_pk}}/edit/'
 LESSON_DELETE_URL = f'/{TESTLANG}/subjects/{{subject_code}}/lessons/{{lesson_pk}}/delete/'
+
 MARKS_LIST_URL = f'/{TESTLANG}/subjects/{{subject_code}}/marks/'
 MARKS_EDIT_URL = f'/{TESTLANG}/subjects/{{subject_code}}/marks/edit/'
+
+# ==============================================================================
+# Helpers
+# ==============================================================================
+
+
+def get_next_url(url):
+    return f'{LOGIN_URL}?next={url}'
 
 
 # ==============================================================================
@@ -72,6 +83,11 @@ def another_teacher():
 @pytest.fixture
 def subject():
     return SubjectFactory()
+
+
+@pytest.fixture
+def lesson(subject):
+    return LessonFactory(subject=subject)
 
 
 @pytest.fixture
