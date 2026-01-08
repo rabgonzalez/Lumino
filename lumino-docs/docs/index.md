@@ -3,15 +3,12 @@ icon: lucide/book-open
 ---
 
 # Introducción
-
-## Propósito del documento
-
-### Objetivos de la documentación
+## Objetivos de la documentación
 La documentación busca dar información específica sobre algo `(en nuestro caso un programa)`, ya sea para poder entender como funciona ese programa, que funciones realiza, cómo está hecho, etc.
 
 Es una manera de ofrecerle al resto de usuarios información que el proyecto no da por si solo.
 
-### Alcance de la documentación
+## Alcance de la documentación
 El alcance de la documentación varía dependiendo del nivel de profundidad de esa documentación.
 
 === "Documentación básica"
@@ -23,41 +20,38 @@ El alcance de la documentación varía dependiendo del nivel de profundidad de e
 ???+ nota
     El nivel de profundidad de la documentación también determinará cómo se comparte esa documentación, habrá casos en los que la documentación será de acceso público `(como este)`, y otros casos en los que la información será privada y el acceso estará restringido.
 
-## Visión general del proyecto
-
-### Software
+## Software
 Lumino está desarrollado en Python utilizando el framework **Django**, que proporciona una arquitectura robusta basada en el patrón MTV[^1]. **Django** facilita la gestión de usuarios, autenticación, control de permisos y la interacción con la base de datos `(En nuestro caso local)`, lo que resulta especialmente adecuado para un campus virtual con distintos roles (alumnos y profesores) y flujos bien definidos.
 
-### Librerías
-
+## Librerías
 <div class="grid cards" markdown>
 
--   #### :fontawesome-regular-image: Sorl Thumbnail
+-   ### :fontawesome-regular-image: Sorl Thumbnail
 
     ---
     Generación y gestión eficiente de miniaturas para los avatares de los perfiles de usuario.
 
--   #### :fontawesome-brands-html5: Django Markdownify
+-   ### :fontawesome-brands-html5: Django Markdownify
 
     ---
     Renderizado de contenido Markdown a HTML, utilizado para los temarios de las asignaturas.
 
--   #### :fontawesome-regular-envelope: Brevo
+-   ### :fontawesome-regular-envelope: Brevo
 
     ---
     Envío de correos electrónicos transaccionales, como notificaciones y certificados.
 
--   #### :fontawesome-brands-stack-overflow: Django RQ
+-   ### :fontawesome-brands-stack-overflow: Django RQ
 
     ---
     Ejecución de tareas en segundo plano (por ejemplo, envío de correos) mediante colas desacopladas.
 
--   #### :fontawesome-solid-shield: Prettyconf
+-   ### :fontawesome-solid-shield: Prettyconf
 
     ---
     Gestión segura de variables de entorno y credenciales, como las claves de acceso a [Brevo](#brevo).
 
--   #### :fontawesome-solid-file-pdf: Weasyprint
+-   ### :fontawesome-solid-file-pdf: Weasyprint
 
     ---
     Generación de documentos PDF a partir de HTML[^2] y CSS[^3], utilizada para los certificados académicos.

@@ -1,4 +1,4 @@
-version = "0.1.0"
+version = "0.1.1"
 slug = "lumino-docs"
 bundle = [
     "/docs/README.pdf",
@@ -18,7 +18,10 @@ exclude_from_zip = [
     ".env",
     "/site",
     "/.cache",
-    ".mypy_cache",
-    ".pytest_cache",
+    "*cache*",
 ]
 test_cmd = "uv run pytest -s"
+
+[release_notes]
+"0.1.0" = "Primera versión"
+"0.1.1" = "Ignora carpetas cache al crear el zip"

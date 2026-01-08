@@ -27,7 +27,7 @@ site_author = "rabgonzalez, relderx"
 # The site_url is the canonical URL for your site. When building online
 # documentation you should set this.
 # Read more: https://zensical.org/docs/setup/basics/#site_url
-#site_url = "https://www.example.com/"
+site_url = "https://rabgonzalez.github.io/Lumino/"
 
 # The copyright notice appears in the page footer and can contain an HTML
 # fragment.
@@ -117,10 +117,10 @@ features = [
 # - https://zensical.org/docs/setup/logo-and-icons/#favicon
 # - https://developer.mozilla.org/en-US/docs/Glossary/Favicon
 #
-#favicon = "images/favicon.png"
+favicon = "images/graduation-cap.svg"
 
 [project.theme.icon]
-logo = "lucide/eclipse"
+logo = "lucide/graduation-cap"
 
 # Zensical supports more than 60 different languages. This means that the
 # labels and tooltips that Zensical's templates produce are translated.
