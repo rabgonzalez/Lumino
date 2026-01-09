@@ -14,3 +14,15 @@ Además, esta estrategia contribuye a:
 * Facilitar el mantenimiento y la evolución del proyecto a largo plazo.
 
 Como resultado, Lumino ofrece una base sólida, fiable y verificable, donde la calidad y la seguridad forman parte integral del proceso de desarrollo.
+
+---
+
+En **Lumino**, las pruebas están organizadas de forma que reflejan directamente la estructura y los componentes principales de la aplicación. Esta separación permite aislar responsabilidades y entender con claridad qué parte del sistema se está validando en cada momento. Existen tests centrados en el **núcleo de la aplicación**, que verifican los flujos generales y el comportamiento global; tests específicos de **cada objeto o modelo**, orientados a comprobar reglas de negocio, validaciones y relaciones; y tests de **autenticación**, que aseguran que los procesos de registro, acceso y control de permisos funcionan correctamente según el rol del usuario.
+
+--- 
+
+## Automatización
+
+Aunque actualmente los tests **no se ejecutan de forma automática dentro de un pipeline de integración continua**, el proyecto cuenta con un mecanismo que facilita su ejecución manual y reduce errores humanos. Para ello se utiliza un **`justfile`**, que es un archivo de configuración asociado a la herramienta *Just*. Este archivo actúa como una **chuleta de comandos**, definiendo recetas reutilizables que permiten ejecutar tareas complejas con una sola orden, sin necesidad de recordar comandos largos o parámetros específicos.
+
+Gracias a este enfoque, cualquier desarrollador puede lanzar los tests de manera consistente y rápida, manteniendo un control razonable de la calidad del código incluso sin automatización completa. Esta solución sirve como paso intermedio hacia una futura integración de tests totalmente automatizada dentro del proceso de despliegue continuo.

@@ -97,3 +97,10 @@ classDiagram
 ```
 
 ## Decisiones de diseño
+Los estilos visuales de **Lumino** están desarrollados utilizando el framework **Bootstrap**, una de las herramientas de diseño frontend más utilizadas en aplicaciones web. Bootstrap proporciona un conjunto de estilos CSS y componentes predefinidos que permiten construir interfaces coherentes, limpias y funcionales sin necesidad de desarrollar todo el diseño desde cero.
+
+El uso de Bootstrap aporta varias ventajas clave al proyecto. En primer lugar, garantiza una **apariencia consistente** en todas las vistas de la aplicación, independientemente del navegador o del dispositivo desde el que se acceda. Su sistema de rejilla facilita la creación de interfaces **responsive**, adaptadas tanto a ordenadores como a dispositivos móviles, algo esencial en una plataforma educativa utilizada por perfiles diversos.
+
+Además, Bootstrap acelera significativamente el desarrollo, ya que ofrece componentes listos para usar —como formularios, botones, tablas o mensajes de alerta— que encajan bien con la estructura de Django y reducen el esfuerzo dedicado al diseño visual. Esto permite centrar el trabajo en la lógica de negocio y en la funcionalidad de la plataforma.
+
+Por último, al tratarse de un framework ampliamente documentado y mantenido, Bootstrap mejora la **mantenibilidad del proyecto**. Cualquier desarrollador que se incorpore a Lumino puede comprender y modificar la interfaz con facilidad, lo que refuerza la sostenibilidad y evolución futura de la aplicación.
