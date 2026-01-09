@@ -15,17 +15,26 @@
     {% csrf_token %} 
     {{ form }}
 
-    <div class="auth-buttons">
-      {% if type == 'login' %} 
-      <input type="submit" value={% translate 'Login' %}>
-      <a class="footer-link" href="{% url 'signup' %}">{% translate 'Sign up' %}</a>
 
-      {% else %} 
-      <input type="submit" value={% translate 'Sign up' %}> 
-      <a class="footer-link" href="{% url 'login' %}">{% translate 'Login' %}</a>
-      
+  <div class="container authButtons mb-5">
+    <div class="row">
+      {% if type == 'login' %}
+        <div class="col text-center">
+          <input type="submit" value={% translate 'Login' %}>
+        </div>
+        <div class="col text-center">
+          <a class="footer-link" href="{% url 'signup' %}">{% translate 'Sign up' %}</a>
+        </div>
+      {% else %}
+        <div class="col text-center">
+          <input type="submit" value={% translate 'Sign up' %}> 
+        </div>
+        <div class="col text-center">
+          <a class="footer-link" href="{% url 'login' %}">{% translate 'Login' %}</a>
+        </div>
       {% endif %}
     </div>
+  </div>
   </form>
 </div>
 {%endblock%}

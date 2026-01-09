@@ -1,17 +1,35 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load markdownify %}
+{% load static %}
 
 {% block content %}
-<h1>{{ lesson.title }}</h1>
-<p>{{ lesson.content|markdownify }}</p>
 
-<div class="controls">
-  <a href="{{ subject.get_absolute_url }}">{% translate 'Go back' %}</a>
-  {% if subject.teacher == request.user %}
-    <a href="{% url 'subjects:edit-lesson' subject lesson %}"><i class="bi bi-pencil-square"></i></a>
-    <a href="{% url 'subjects:delete-lesson' subject lesson %}"><i class="bi bi-trash3-fill"></i></a>
-  {% endif %}
+<link rel="stylesheet" href="{% static "css/lesson_detail.css" %}">
+
+<div class="container mb-4">
+  <div class="row">
+    <h2 class="col text-center mt-5 fw-bold">{{ lesson.title }}</h2>
+  </div>
+  <div class="row">
+    <h2 class="col fs-5 border border-3 border-black rounded-3 mt-5 p-5 bg-primary-subtle fw-bold text-body-secondary">{{ lesson.content|markdownify }}</h2>
+  </div>
+</div>
+
+<div class="container controls mb-5">
+  <div class="row">
+    {% if subject.teacher == request.user %}
+      <div class="col rounded-3 text-center">
+        <a href="{% url 'subjects:delete-lesson' subject lesson %}"><i class="bi bi-trash3-fill"></i></a>
+      </div>
+      <div class="col rounded-3 text-center">
+        <a href="{% url 'subjects:edit-lesson' subject lesson %}"><i class="bi bi-pencil-square"></i></a>
+      </div>
+    {% endif %}
+    <div class="col rounded-3 text-center">
+      <a href="{{ subject.get_absolute_url }}">{% translate 'Go back' %}</a>
+    </div>
+  </div>
 </div>
 {% endblock %}
  

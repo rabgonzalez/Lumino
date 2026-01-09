@@ -1,0 +1,23 @@
+a {
+  text-decoration: none;
+}
+
+.marksNav .col a {
+  padding: 10px;
+  font-weight: bolder;
+  border: none;
+  border-radius: 10px;
+}
+
+.marksNav .col a:hover {
+  color: white;
+  background-color: #0d6efd;
+}
+
+.marks {
+  border: #1758b9 solid 3px;
+  border-radius: 15px;
+}
+.marks:hover {
+  background-color: #c2dbff;
+}

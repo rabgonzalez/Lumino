@@ -6,9 +6,14 @@
 
 <link rel="stylesheet" href="{% static 'css/subject_detail.css' %}">
 
-<h1>{{subject.code}}</h1>
-<h3>{{subject.name}}</h3>
-<h4>{% translate 'Teacher:' %} {{subject.teacher}}</h4>
+<div class="container mb-4">
+  <div class="row">
+    <h2 class="col mt-5 fs-1 text-center fw-bold">{{subject.code}}: {{subject.name}}</h2>
+  </div>
+  <div class="row">
+    <h2 class="col fs-3 text-center fw-bold text-body-secondary">{% translate 'Teacher:' %} {{subject.teacher}}</h2>
+  </div>
+</div>
 
 {% if user.profile.role == 'S' and mark %}
   <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>

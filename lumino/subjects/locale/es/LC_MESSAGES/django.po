@@ -53,8 +53,8 @@ msgid "Enroll in subjects"
 msgstr "Matricularse en módulos"
 
 #: subjects/templates/student_subjects.html:17
-msgid "Cancel subjects"
-msgstr "Cancelar módulos"
+msgid "Unenroll in subjects"
+msgstr "Desmatricularse en módulos"
 
 #: subjects/templates/student_subjects.html:26
 #: subjects/templates/subject_detail.html:27

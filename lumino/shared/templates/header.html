@@ -10,41 +10,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <a href="{% url 'index'%}" class="navbar-brand logo-link align-content-center">
-      <h1 class=""><i class="bi bi-mortarboard-fill me-2">Lumino</i></h1>
+      <h1 class=""><i class="bi bi-mortarboard-fill me-2 ms-5">Lumino</i></h1>
     </a>
     {% if user.is_authenticated %}
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
-      <ul class="navbar-nav justify-content-center">
-        <li class="nav-item mx-2">
-          <button class="btn btn-outline-primary buttons"><a class="" href="{% url 'subjects:subject-list' %}">{% translate 'Subjects' %}</a></button>
-        </li>
-        <li class="nav-item mx-2">
-          <button class="btn btn-outline-primary buttons"><a class="" href="{% url 'users:user-detail' request.user.profile %}" title="{% translate 'Profile' %}">{{user.first_name}}</a></button>
-        </li>
-        <li class="nav-item mx-2">
-          {% setlang %}
-        </li>
-        <li class="nav-item mx-2">
-          <button class="btn btn-outline-primary buttons"> <a href="{% url 'logout' %}">{% translate 'logout' %}</a></button>
-        </li>
-      </ul>
-    </div>
+      <div class="collapse navbar-collapse container" id="navbarTogglerDemo03">
+        <ul class="navbar-nav justify-content-center row">
+          <li class="nav-item mx-2 col">
+            <button class="btn btn-outline-primary buttons"><a class="" href="{% url 'subjects:subject-list' %}">{% translate 'Subjects' %}</a></button>
+          </li>
+          <li class="nav-item mx-2 col">
+            <button class="btn btn-outline-primary buttons"><a class="" href="{% url 'users:user-detail' request.user.profile %}" title="{% translate 'Profile' %}">{{user.first_name}}</a></button>
+          </li>
+          <li class="nav-item mx-2 col">
+            {% setlang %}
+          </li>
+          <li class="nav-item mx-2 col">
+            <button class="btn btn-outline-primary buttons"> <a href="{% url 'logout' %}">{% translate 'logout' %}</a></button>
+          </li>
+        </ul>
+      </div>
     {% endif %}
   </div>
 </nav>
-
-<div class="container title-lang">
-  <div class="row">
-    
-    <div class="lang col-md align-content-end text-end">
-    </div>
-  </div>
-</div>
-
-{% if user.is_authenticated %}
-<div class="container">
-  <div class="row">
-    <div class="col-md my-3 text-center"></div>
-  </div>
-</div>
-{% endif %}

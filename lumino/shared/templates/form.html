@@ -7,8 +7,19 @@
 
 <form method="post" enctype="multipart/form-data" novalidate>
   {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="{% translate 'Save' %}">
-  <a href="javascript:history.back()">{% translate 'Go back' %}</a>
+  <div class="form">
+    {{ form.as_p }}
+  </div>
+
+  <div class="container footerForm mb-5">
+    <div class="row">
+      <div class="col text-center">
+        <input type="submit" value="{% translate 'Save' %}">
+      </div>
+      <div class="col text-center">
+        <a href="javascript:history.back()">{% translate 'Go back' %}</a>
+      </div>
+    </div>
+  </div>
 </form>
 {% endblock %}

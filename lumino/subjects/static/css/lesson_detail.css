@@ -1,0 +1,15 @@
+a {
+  text-decoration: none;
+}
+
+.controls .col a {
+  padding: 10px;
+  font-weight: bolder;
+  border: solid 2px #0d6efd;
+  border-radius: 10px;
+}
+
+.controls .col a:hover {
+  color: white;
+  background-color: #0d6efd;
+}
