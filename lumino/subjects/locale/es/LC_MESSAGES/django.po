@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-01-06 16:51+0000\n"
+"POT-Creation-Date: 2026-01-08 21:34+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,34 +41,28 @@ msgid "Edit marks"
 msgstr "Editar notas"
 
 #: subjects/templates/mark_list.html:11
-#, fuzzy
-#| msgid "No subjects yet"
 msgid "This subject is empty"
 msgstr "Todavía no hay módulos"
 
-#: subjects/templates/student_subjects.html:4
+#: subjects/templates/student_subjects.html:10
 msgid "Get your certificate of qualifications!"
-msgstr "Obten tu certificado de calificaciones!"
+msgstr "¡Obten tu certificado de calificaciones!"
 
-#: subjects/templates/student_subjects.html:7
-#, fuzzy
-#| msgid "Enroll in modules"
+#: subjects/templates/student_subjects.html:14
 msgid "Enroll in subjects"
 msgstr "Matricularse en módulos"
 
-#: subjects/templates/student_subjects.html:9
-#, fuzzy
-#| msgid "My subjects"
+#: subjects/templates/student_subjects.html:17
 msgid "Cancel subjects"
-msgstr "Mis módulos"
+msgstr "Cancelar módulos"
 
-#: subjects/templates/student_subjects.html:15
+#: subjects/templates/student_subjects.html:26
 #: subjects/templates/subject_detail.html:27
 #: subjects/templates/teacher_subjects.html:6
 msgid "Details"
 msgstr "Detalles"
 
-#: subjects/templates/student_subjects.html:18
+#: subjects/templates/student_subjects.html:29
 #: subjects/templates/teacher_subjects.html:9
 msgid "No subjects yet"
 msgstr "Todavía no hay módulos"
@@ -101,35 +95,27 @@ msgstr "Eliminar lección"
 msgid "There is no lessons yet"
 msgstr "Todavía no hay lecciones"
 
-#: subjects/templates/subjects.html:5
+#: subjects/templates/subjects.html:7
 msgid "My subjects"
 msgstr "Mis módulos"
 
-#: subjects/views.py:16
+#: subjects/views.py:15
 msgid "You don't have access"
 msgstr "No tienes acceso"
 
 #: subjects/views.py:66
-#, fuzzy
-#| msgid "Lesson was successfully added"
 msgid "Lesson was successfully added."
 msgstr "La lección fue añadida"
 
 #: subjects/views.py:87
-#, fuzzy
-#| msgid "Changes were successfully saved"
 msgid "Changes were successfully saved."
 msgstr "Los cambios fueron guardados"
 
 #: subjects/views.py:99
-#, fuzzy
-#| msgid "Lesson was successfully added"
 msgid "Lesson was successfully deleted."
 msgstr "La lección fue eliminada"
 
 #: subjects/views.py:123
-#, fuzzy
-#| msgid "Changes were successfully saved"
 msgid "Marks were successfully saved."
 msgstr "Los cambios fueron guardados"
 
