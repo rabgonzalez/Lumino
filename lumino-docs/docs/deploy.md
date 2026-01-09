@@ -39,15 +39,15 @@ A continuación se detallan los **aspectos necesarios para desplegar Lumino en u
 
 ## Configuración necesaria para el despliegue
 
-Para desplegar Lumino en un servidor (por ejemplo, Azure), sería necesaria la siguiente configuración:
+Para desplegar Lumino en un servidor `(por ejemplo, Azure)`, sería necesaria la siguiente configuración:
 
 ### Infraestructura y entorno
 
-* **Servidor Linux** (máquina virtual o servicio gestionado).
+* **Servidor Linux** `(máquina virtual o servicio gestionado)`.
 * **Python** y entorno virtual para aislar dependencias.
-* **Servidor web** (Nginx o similar) como proxy inverso.
-* **Servidor WSGI** (Gunicorn o uWSGI) para ejecutar Django.
-* **Base de datos externa** (por ejemplo, PostgreSQL) para producción.
+* **Servidor web** `(Nginx o similar)` como proxy inverso.
+* **Servidor WSGI** `(Gunicorn o uWSGI)` para ejecutar Django.
+* **Base de datos externa** `(por ejemplo, PostgreSQL)` para producción.
 * **Redis** como backend para tareas asíncronas con `django-rq`.
 
 ### Configuración de Django
@@ -55,7 +55,7 @@ Para desplegar Lumino en un servidor (por ejemplo, Azure), sería necesaria la s
 * Variables de entorno para credenciales y claves sensibles.
 * `DEBUG = False` y configuración adecuada de `ALLOWED_HOSTS`.
 * Gestión de archivos estáticos y media.
-* Configuración de correo transaccional (Brevo).
+* Configuración de correo transaccional `(Brevo)`.
 * Integración con el sistema de colas para tareas en segundo plano.
 
 ---
@@ -64,9 +64,9 @@ Para desplegar Lumino en un servidor (por ejemplo, Azure), sería necesaria la s
 
 Para manejar errores de forma eficaz, se pueden aplicar varias estrategias complementarias:
 
-* **Logs estructurados**, diferenciando niveles (info, warning, error).
+* **Logs estructurados**, diferenciando niveles (<span style="color: lightblue">info</span>, <span style="color: orange">warning</span>, <span style="color: red">error</span>).
 * **Captura de excepciones** en vistas críticas para evitar fallos no controlados.
-* **Páginas de error personalizadas** (404, 500) para mejorar la experiencia del usuario.
+* **Páginas de error personalizadas** (<span style="color: red">404</span>, <span style="color: purple">500</span>) para mejorar la experiencia del usuario.
 * **Monitorización de errores en producción**, detectando incidencias en tiempo real.
 * Uso de **tests automatizados** para prevenir regresiones antes del despliegue.
 
@@ -78,7 +78,7 @@ Estas estrategias permiten detectar, diagnosticar y corregir errores con rapidez
 
 Para que el entorno de producción sea sostenible a largo plazo, se deben aplicar buenas prácticas de mantenimiento y escalabilidad:
 
-* **Integración y despliegue continuo (CI/CD)** para automatizar pruebas y despliegues.
+* **Integración y despliegue continuo `(CI/CD)`** para automatizar pruebas y despliegues.
 * **Control de calidad del código** mediante herramientas como SonarQube.
 * **Escalado horizontal o vertical** según el crecimiento de la plataforma.
 * **Backups periódicos** de la base de datos y datos críticos.
