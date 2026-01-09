@@ -1,7 +1,10 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static%}
 
 {% block content %}
+
+<link rel="stylesheet" href="{% static 'css/subject_detail.css' %}">
 
 <h1>{{subject.code}}</h1>
 <h3>{{subject.name}}</h3>
@@ -11,26 +14,44 @@
   <p>{% translate 'Your mark for this subject:' %} {{ mark }}</p>
 {% endif %}
 
-<a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
-
-{% if user.profile.role == 'T' %}
-  <a href="{% url 'subjects:mark-list' subject %}">{% translate 'See all marks' %}</a>
-  <a href="{% url 'subjects:add-lesson' subject %}">{% translate 'New lesson' %}</a>
-{% endif %}
+<div class="container titleNav mb-5">
+  <div class="row">
+    <div class="col text-center">
+      <a href="{% url 'subjects:subject-list' %}">{% translate 'Go back' %}</a>
+    </div>
+    {% if user.profile.role == 'T' %}
+      <div class="col text-center">
+        <a href="{% url 'subjects:mark-list' subject %}">{% translate 'See all marks' %}</a>
+      </div>
+      <div class="col text-center">
+        <a href="{% url 'subjects:add-lesson' subject %}">{% translate 'New lesson' %}</a>
+      </div>
+    {% endif %}
+  </div>
+</div>
 
 {% if subject.lessons %}
   <div class="lessons">
 {% for lesson in subject.lessons.all %}
-  <div class="lesson">
-    <h5>{{lesson.title}}</h5>
-    <div class="controls">
-    <a href="{% url 'subjects:lesson-detail' subject lesson %}">{% translate 'Details' %}</a>
-    {% if user.profile.role == 'T' %}
-      <a href="{% url 'subjects:edit-lesson' subject lesson %}">{% translate 'Edit lesson' %}</a>
-      <a href="{% url 'subjects:delete-lesson' subject lesson %}">{% translate 'Delete lesson' %}</a>
-    {% endif %}
-    </div>
-  </div>
+  <ul class="list-group">
+    <li class="list-group-item d-flex align-items-center my-3 container-fluid">
+      <b class="col">{{lesson.title}}</b>
+      <span class="col justify-content-end">
+        <span class="badge text-bg-primary rounded-pill">
+          <a class="p-2" href="{% url 'subjects:lesson-detail' subject lesson %}">{% translate 'Details' %}</a>
+        </span>
+        {% if user.profile.role == 'T' %}
+          <span class="badge text-bg-warning rounded-pill">
+              <a class="p-2" href="{% url 'subjects:edit-lesson' subject lesson %}">{% translate 'Edit lesson' %}</a>
+          </span>
+          <span class="badge text-bg-danger rounded-pill">
+              <a class="p-2" href="{% url 'subjects:delete-lesson' subject lesson %}">{% translate 'Delete lesson' %}</a>
+          </span>
+        {% endif %}
+      </span>
+    </li>
+
+  </ul>
 {% endfor %}
   </div>
 {% else %}

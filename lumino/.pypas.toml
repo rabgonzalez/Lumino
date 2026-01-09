@@ -1,4 +1,4 @@
-version = "0.1.3"
+version = "0.1.4"
 slug = "lumino"
 bundle = [
     "/docs/README.pdf",
@@ -14,7 +14,6 @@ bundle = [
     "/pytest.ini",
 ]
 backup_on_update = ["justfile"]
-update_notes = "Corrige tests login_required"
 delete_on_update = ["tests/test_login_required.py"]
 exclude_from_zip = [
     "*.pyc",
@@ -24,5 +23,13 @@ exclude_from_zip = [
     ".venv",
     ".env",
     "/media",
+    "*cache*"
 ]
 test_cmd = "uv run pytest"
+
+[release_notes]
+"0.1.0" = "Primera versión"
+"0.1.1" = "Actualización de tests"
+"0.1.2" = "Actualización de tests"
+"0.1.3" = "Corrige tests login_required"
+"0.1.4" = "Ignora carpetas cache al crear el zip"

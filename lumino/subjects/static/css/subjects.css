@@ -75,11 +75,6 @@ h2::after {
   transition: all 0.3s ease;
 }
 
-.subject a:hover {
-  background-color: #0d6efd;
-  color: white;
-}
-
 a[href*="logout"] {
   color: #dc3545;
 }

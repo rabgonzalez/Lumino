@@ -1,20 +1,42 @@
 {% load i18n %}
-{% if certificate %}
-  <div class="certificate">
-    <a href="{% url 'subjects:request-certificate' %}">{% translate 'Get your certificate of qualifications!' %}</a>
-  </div>
-{% endif %}
-<a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in subjects' %}</a>
+{% load static %}
 
-<a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel subjects' %}</a>
+<link rel="stylesheet" href="{% static 'css/student_subjects.css' %}">
 
-<div class="subjects">
-  {% for subject in subjects %}
-  <div class="subject">
-    <p>{{ subject }}</p>
-    <a href="{{ subject.get_absolute_url }}">{% translate 'Details' %}</a>
+<div class="container titleNav mb-5">
+  <div class="row">
+    {% if certificate %}
+      <div class="col text-center">
+        <a href="{% url 'subjects:request-certificate' %}">{% translate 'Get your certificate of qualifications!' %}</a>
+      </div>
+    {% endif %}
+    <div class="col text-center">
+      <a href="{% url 'subjects:enroll-subjects' %}">{% translate 'Enroll in subjects' %}</a>
+    </div>
+    <div class="col text-center">
+      <a href="{% url 'subjects:unenroll-subjects' %}">{% translate 'Cancel subjects' %}</a>
+    </div>
   </div>
-  {% empty %}
-  <p>{% translate 'No subjects yet' %}</p>
-  {% endfor %}
+</div>
+
+<div class="container">
+  <div class="container">
+    <div class="row">
+      {% for subject in subjects %}
+      <div class="col-sm-6 mb-3">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ subject }}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{ subject.name }}</h6>
+            <a class="card-link" href="{{ subject.get_absolute_url }}">{% translate 'Details' %}</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+        <div class="row">
+          <div class="col text-center"><p class="emptySubject">{% translate 'No subjects yet' %}</p></div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>

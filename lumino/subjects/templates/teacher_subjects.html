@@ -1,11 +1,20 @@
 {% load i18n %}
-<div class="subjects">
-  {% for subject in subjects %}
-  <div class="subject">
-    <p>{{subject.code}}</p>
-    <a href="{{ subject.get_absolute_url }}">{% translate 'Details' %}</a>
+<div class="container">
+  <div class="row">
+    {% for subject in subjects %}
+    <div class="col-sm-6 mb-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{ subject }}</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">{{ subject.name }}</h6>
+          <a class="card-link" href="{{ subject.get_absolute_url }}">{% translate 'Details' %}</a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+      <div class="row">
+        <div class="col text-center"><p class="emptySubject">{% translate 'No subjects yet' %}</p></div>
+      </div>
+    {% endfor %}
   </div>
-  {% empty %}
-  <p>{% translate 'No subjects yet' %}</p>
-  {% endfor %}
 </div>
